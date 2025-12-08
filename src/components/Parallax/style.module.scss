@@ -1,0 +1,18 @@
+.parallaxContainer {
+  position: relative;
+  overflow: hidden; // limita a imagem à div pai
+  width: 100%;
+  background-attachment: fixed;
+}
+
+.parallaxImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; 
+  object-fit: contain;
+  height: auto;
+  min-height: 100%; // garante que sempre cubra a div pai
+  will-change: transform;
+  transition: .1s all linear;
+}

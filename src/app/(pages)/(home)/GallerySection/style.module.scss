@@ -1,0 +1,202 @@
+.gallery {
+
+    @apply relative bg-white w-full py-12 md:py-16;
+
+    background-image: linear-gradient(to top, #007157 60%, #ffffff 40%);
+
+
+    .box-subtitle {
+        @apply relative flex flex-col items-start pt-2 pl-0 lg:pl-3 lg:pt-0;
+
+        &:before {
+            @apply content-[''] absolute bottom-0 left-0 w-[40%] h-0.5 bg-primary;
+        }
+    }
+
+
+
+    .carousel-gallery {
+        &__item {
+            @apply relative transition-all ease-in-out duration-300;
+
+            .legend {
+                @apply bg-primary flex items-center p-2 absolute bottom-4 md:bottom-8 max-w-[70%] text-left right-0 text-black tracking-wider font-semibold text-xs transition-all ease-in-out;
+            }
+
+        }
+
+        .swiper-slide-active {
+            padding: 0 !important;
+
+            .legend {
+                @apply md:opacity-0;
+            }
+        }
+
+        .swiper-nav-button {
+            @apply text-white font-semibold text-lg font-secondary tracking-[.15em] cursor-pointer relative mt-8 md:mt-2 pb-1.5;
+
+            &:before {
+
+                @apply content-[''] w-[30%] h-[3px] absolute -bottom-0 bg-primary rounded-full;
+                transition: .5s;
+                -webkit-transition: .5s;
+            }
+
+            &:hover {
+                &:before {
+                    @apply w-full;
+                }
+            }
+
+            &.custom-prev-button {
+                &:before {
+                    @apply right-0;
+                }
+            }
+
+            &.custom-next-button {
+                &:before {
+                    @apply left-0;
+                }
+            }
+        }
+
+
+        .swiper-button-disabled {
+            opacity: 30%;
+        }
+    }
+
+
+
+    .swipper-navigation {
+        @apply flex justify-between items-center mt-8;
+
+        .swiper-nav-button {
+            @apply text-white font-semibold text-base tracking-[.15em] cursor-pointer hover:opacity-70 relative pb-1;
+
+            &:before {
+                content: "";
+                @apply w-[30%] h-[2px] absolute -bottom-0 bg-white rounded-full pointer-events-none;
+                transition: .5s;
+                -webkit-transition: .5s;
+            }
+
+            &:hover {
+                &:before {
+                    @apply w-full
+                }
+            }
+
+            &:first-child {
+                &::before {
+                    @apply right-0;
+                }
+            }
+
+            &:last-child {
+                &::before {
+                    @apply left-0;
+                }
+            }
+
+            &:disabled {
+                visibility: hidden;
+            }
+        }
+
+
+    }
+}
+
+.vel-modal {
+
+    @apply bg-[#000000f2];
+
+}
+
+.titulo6 {
+
+    @apply text-primary font-medium lg:text-7xl text-6xl z-[5];
+
+}
+
+
+.galery {
+
+    @apply object-cover scale-90 transition-all ease-in-out duration-300 border-[1px] border-gray;
+
+}
+
+.swiper-slide-active .galery {
+
+    @apply scale-100;
+
+}
+
+.swiper {
+
+    @apply w-full h-full;
+
+}
+
+.swiper-slide {
+
+    @apply bg-transparent;
+
+}
+
+
+
+.box-legenda3 {
+
+    @apply flex pt-5 justify-between flex-row-reverse lg:gap-6 gap-2 items-center lg:mt-0 md:mt-8 sm:mt-0 mt-8;
+
+}
+
+.proximo3 {
+
+    @apply relative z-[5] font-bold text-white uppercase text-base cursor-pointer tracking-wide;
+
+
+    &::before {
+
+        @apply bg-primary left-0 bottom-0 absolute content-[''] w-3/5 h-0.5 transition-all duration-700 ease-in-out;
+
+    }
+
+    &:hover {
+
+        @apply text-primary;
+
+        &::before {
+
+            @apply bg-primary w-full;
+
+        }
+    }
+}
+
+.anterior3 {
+
+    @apply text-white z-[5] uppercase text-base cursor-pointer tracking-wide font-bold relative;
+
+
+
+    &::before {
+
+        @apply bg-primary right-0 bottom-0 absolute content-[''] w-3/5 h-0.5 transition-all duration-700 ease-in-out;
+
+    }
+
+    &:hover {
+
+        @apply text-primary;
+
+        &::before {
+
+            @apply bg-primary w-full;
+        }
+    }
+}

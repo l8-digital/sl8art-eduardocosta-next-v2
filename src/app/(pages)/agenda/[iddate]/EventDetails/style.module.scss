@@ -1,0 +1,52 @@
+
+.container-carousel {
+
+    width: calc(100% - 140px);
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.nav-position {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+
+.c-list {
+    @apply flex flex-col gap-4 md:gap-6;
+
+    &__item {
+        @apply text-lg md:text-lg font-semibold uppercase text-gray-light leading-tight;
+
+        span {
+            @apply text-xl md:text-xl text-black font-semibold uppercase;
+        }
+    }
+
+    &--right {
+        @apply items-center md:items-end;
+
+        .c-list__item {
+            @apply text-center md:text-right;
+        }
+
+        &\@md {
+            @media (max-width: 64em) {
+                @apply items-center md:items-end;
+
+                .c-list__item {
+                    @apply text-center md:text-right;
+                }
+            }
+        }
+    }
+
+
+}
+
+
+

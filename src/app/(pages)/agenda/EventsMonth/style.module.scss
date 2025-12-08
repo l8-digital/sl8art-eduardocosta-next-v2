@@ -1,0 +1,141 @@
+.calendar-page {
+    @apply min-h-screen bg-white w-full py-12 md:pt-32 md:pb-16 relative;
+
+
+
+    .c-list {
+        @apply w-full py-10 md:py-14 relative;
+
+        &__item {
+            overflow: hidden;
+            position: relative;
+
+            @apply px-6 py-7 md:px-8 md:py-4 flex flex-col md:flex-row items-center gap-3 md:gap-7 bg-white border-2 border-primary rounded-lg;
+
+            .bg-schedule {
+                @apply w-full h-full absolute top-0 left-0 z-[0];
+                background-repeat: no-repeat !important;
+                background-size: cover !important;
+                background-position: center center !important;
+                transition: .3s ease-in-out;
+                -webkit-transition: .3s ease-in-out;
+
+
+                &:before {
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    transition: .3s ease-in-out;
+                }
+            }
+
+            &:hover {
+                .bg-schedule {
+                    &:before {
+                        backdrop-filter: blur(10px);
+                    }
+                }
+            }
+        }
+
+        &__month {
+            @apply text-black tracking-wider font-secondary text-2xl md:text-xl uppercase -mt-2;
+        }
+
+        &__day {
+            @apply text-black-dark text-7xl md:text-6xl font-secondary font-black uppercase md:pt-2;
+        }
+
+        &__name {
+            @apply text-xl md:text-xl text-center md:text-left tracking-[.01em] font-medium text-black/80;
+        }
+
+        &__city {
+            @apply text-black text-lg md:text-lg font-semibold text-center md:text-left tracking-[.02em] uppercase;
+        }
+
+        &__corporate {
+            @apply text-xl md:text-xl text-black-light text-center md:text-left tracking-[.01em] font-medium;
+        }
+
+        &__details {
+            @apply text-secondary text-sm font-black uppercase;
+        }
+
+        .swiper-slide {
+            height: auto;
+
+            &:nth-child(even) {
+                .c-schedule {
+                    &__month {
+                        @apply text-tertiary;
+                    }
+
+                    &__day {
+                        @apply text-secondary;
+                    }
+
+                    &__state {
+                        @apply text-tertiary;
+                    }
+
+                    &__city {
+                        @apply text-tertiary;
+                    }
+
+                    &__corporate {
+                        @apply text-tertiary;
+                    }
+
+                    &__details {
+                        @apply text-tertiary;
+                    }
+                }
+            }
+        }
+
+        .swipper-navigation {
+            @apply w-full mt-5 hidden md:block;
+        }
+
+        .swiper-nav-button {
+            @apply text-secondary font-secondary font-semibold text-lg tracking-[.15em] cursor-pointer hover:opacity-70 relative;
+
+            &:before {
+                content: "";
+                @apply w-[30%] h-[3px] absolute -bottom-0 bg-primary;
+                transition: .5s;
+                -webkit-transition: .5s;
+            }
+
+            &:hover {
+                &:before {
+                    @apply w-full
+                }
+            }
+
+            &.custom-prev-button {
+                &:before {
+                    @apply right-0;
+                }
+            }
+
+            &.custom-next-button {
+                &:before {
+                    @apply left-0;
+                }
+            }
+        }
+
+
+        .swiper-button-disabled {
+            visibility: hidden;
+        }
+
+    }
+
+
+}

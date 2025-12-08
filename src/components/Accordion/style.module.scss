@@ -1,0 +1,54 @@
+/* ======================================================================== */
+/* style.module.scss                               */
+/* ======================================================================== */
+
+.accordion-question {
+    @apply border-b border-gray-200 py-4 lg:py-6 cursor-pointer transition-colors ease-in-out duration-100;
+
+    &__item {
+        @apply flex justify-between items-center;
+
+        .question {
+            @apply text-black text-pretty font-bold text-lg md:text-xl;
+        }
+
+        .icon-arrow {
+            @apply w-9 h-9 stroke-black transition-all ease-in-out duration-300;
+
+            &.active {
+                @apply -rotate-180;
+            }
+        }
+    }
+}
+
+/*
+ * Correção Principal:
+ * - Removemos `max-height` e `visibility` das classes. A altura será controlada via JavaScript.
+ * - A animação agora se concentra em `max-height` e `opacity`.
+ * - `overflow: hidden` é a chave para esconder o conteúdo quando `max-height` é 0.
+ */
+.accordion-request {
+    @apply text-black md:text-lg;
+    max-height: 0;
+    /* Estado inicial, sempre 0 */
+    overflow: hidden;
+    opacity: 0;
+    /* Transição suave para altura e opacidade */
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+    &.active {
+        /* Quando ativo, a altura é definida pelo JS. A classe só precisa tornar o conteúdo opaco. */
+        opacity: 1;
+    }
+}
+
+/*
+ * Melhoria:
+ * Adicionamos um container interno para o conteúdo.
+ * Isso previne que o padding seja "esmagado" durante a animação, resultando em um efeito visual mais limpo.
+ */
+.accordion-content-inner {
+    @apply pt-2 pb-4;
+    /* Adicione o padding aqui, e não no container que anima */
+}

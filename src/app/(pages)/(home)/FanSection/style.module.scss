@@ -1,0 +1,39 @@
+.fan {
+    @apply w-full h-full pb-12 md:pb-16 relative bg-black overflow-hidden;
+
+
+    &__image {
+        @apply w-full aspect-[4/5] md:aspect-[16/5];
+        background-image: var(--bgdesk-areafa);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @media (max-width: 769px) {
+            background-image: var(--bgmobile-areafa);
+            background-position: top;
+            background-size: cover;
+        }
+    }
+
+    &__box {
+        @apply flex gap-1 flex-col text-white py-4 px-5 md:px-20 text-center backdrop-blur-md border-white border-[0.5px] text-balance rounded-2xl -mt-14 text-base md:text-3xl transition duration-300 ease-in-out scale-95 hover:scale-100 z-[2];
+
+        .title {
+            @apply text-5xl md:text-7xl -mb-2 text-secondary tracking-wider font-secondary;
+        }
+
+        .text {
+
+            &-left,
+            &-right {
+                @apply text-lg md:text-3xl font-bold tracking-wide leading-snug text-black uppercase hidden md:block font-secondary;
+            }
+
+            &-right {
+                @apply text-end;
+            }
+        }
+    }
+
+}

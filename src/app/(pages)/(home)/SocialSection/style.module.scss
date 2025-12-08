@@ -1,0 +1,19 @@
+.social{
+    @apply w-full pt-12 md:pb-8 md:pt-8 bg-white;
+
+    &__title{
+        @apply  text-black font-secondary mb-8 md:mb-0 text-6xl md:text-[5.75rem] uppercase;
+    }
+
+    &__subtitle{
+        @apply text-secondary md:text-sm font-semibold tracking-[1px] lg:mb-3;
+
+        svg{
+            @apply h-8 md:h-7 fill-secondary mb-1;
+        }
+    }
+
+    &__number{
+       @apply text-primary font-secondary ;
+    }
+}

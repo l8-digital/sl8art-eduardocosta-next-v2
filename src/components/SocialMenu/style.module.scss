@@ -1,0 +1,58 @@
+.social {
+    @apply grid grid-cols-1 gap-5;
+
+}
+
+
+.itemFromLeft,
+.itemFromRight {
+    opacity: 0;
+}
+
+.itemFromLeft {
+    transform: translateX(-150%);
+}
+
+.itemFromRight {
+    transform: translateX(150%);
+}
+
+
+@keyframes slideInFromLeft {
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+.startAnimation {
+    .itemFromLeft,
+    .itemFromRight {
+        animation-fill-mode: forwards;
+        animation-duration: 0.8s;
+        animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .itemFromLeft {
+        animation-name: slideInFromLeft;
+    }
+
+    .itemFromRight {
+        animation-name: slideInFromRight;
+    }
+
+
+    @for $i from 1 through 6 {
+        li:nth-child(#{$i}) {
+            animation-delay: #{$i * 0.15}s;
+        }
+    }
+}

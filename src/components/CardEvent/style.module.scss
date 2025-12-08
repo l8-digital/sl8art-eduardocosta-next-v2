@@ -1,0 +1,64 @@
+.c-card {
+
+  &__item {
+        @apply relative overflow-hidden border-gray border-[1px] h-full flex flex-1 bg-[#CCCCCC] hover:bg-[#CCCCCC]/80 font-tertiary rounded-xl py-5 px-5;
+
+        // .bg-schedule {
+        //     background-repeat: no-repeat !important;
+        //     background-size: cover !important;
+        //     background-position: center center !important;
+        //     transition: .3s ease-in-out;
+        //     -webkit-transition: .3s ease-in-out;
+        //     @apply w-full h-full absolute top-0 left-0 z-[0];
+
+        //     &:before {
+        //         content: '';
+        //         width: 100%;
+        //         height: 100%;
+        //         position: absolute;
+        //         top: 0;
+        //         left: 0;
+        //         transition: .3s ease-in-out;
+        //     }
+        // }
+
+        // &:hover {
+        //     .bg-schedule {
+        //         &:before {
+        //             backdrop-filter: blur(10px);
+        //         }
+        //     }
+        // }
+
+        // &:nth-child(even){
+        //    color: white!important;
+        // }
+
+    }
+
+    &__month {
+        @apply text-black font-tertiary tracking-[0.3rem] text-sm md:text-sm uppercase ;
+    }
+
+    &__day {
+        @apply  text-black text-[7rem] md:text-[8rem] font-black uppercase leading-none;
+    }
+
+    &__state {
+        @apply text-black text-lg md:text-base font-medium;
+    }
+
+    &__city {
+        @apply text-black text-xl md:text-base tracking-[.1rem] uppercase  font-medium line-clamp-1;
+    }
+
+    &__corporate {
+        @apply text-black text-lg md:text-sm tracking-[.15em] font-black uppercase truncate pb-1;
+    }
+
+    &__details {
+        @apply text-white text-base md:text-xs font-sans font-light uppercase bg-black rounded-full px-2 py-2 md:py-1 w-full md:w-max;
+    }
+
+
+}

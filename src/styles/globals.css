@@ -1,0 +1,115 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.o-title {
+    @apply text-[3rem] leading-none md:text-[5rem] font-tertiary font-bold uppercase;
+}
+
+.o-subtitle {
+    @apply text-3xl md:text-[3rem] font-semibold md:leading-[1.15] tracking-tighter 2xl:tracking-tight ;
+    font-display: swap
+}
+
+.o-subsubtitle{
+    @apply leading-tight text-lg md:text-xl font-[550] tracking-[0.003em] ;
+}
+
+body{
+    @apply bg-black tracking-[0.005em] font-normal;
+}
+
+.c-swiper-nav {
+    @apply text-sm font-medium mt-3 w-full flex flex-col  items-center gap-2  md:hidden;
+}
+
+.c-swiper-nav__indicator {
+     @apply h-6 ;
+     animation: floating 3s ease-in-out infinite;
+ }
+
+
+.swiper-pagination-bullets {
+    position: relative !important;
+    bottom: 0  !important;
+
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #FFFFFF !important;
+}
+.swiper-pagination-bullet {
+    position: relative !important;
+    background-color: #CCCCCC !important;
+    margin-top: 1rem !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #FFFFFF !important;
+}
+.c-swiper-nav {
+    @apply text-sm font-medium mt-3 w-full flex flex-col  items-center gap-2 ;
+}
+
+.c-swiper-nav__indicator {
+     @apply h-6 ;
+     animation: floating 3s ease-in-out infinite;
+ }
+ 
+
+.grecaptcha-badge { 
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.is-loading {
+    color: transparent !important;
+    justify-content: center;
+    align-items: center;
+    cursor: not-allowed;
+    position: relative;
+    overflow: hidden;
+}
+
+.is-loading::before {
+    content: '';
+        height: 22px;
+        width: 22px;
+        color: rgba(179, 176, 176, .6);
+        position: absolute;
+        display: inline-block;
+        border: 3px solid;
+        border-radius: 50%;
+        border-right-color: rgba(179, 176, 176, 0);
+        animation: rotate .75s linear infinite;
+        z-index: 1;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+ @keyframes floating {
+    0% {
+        transform: translate(0px, 0);
+        -webkit-transform: translate(0px, 0);
+        -o-transform: translate(0px, 0);
+        -ms-transform: translate(0px, 0);
+    }
+    50% {
+        transform: translate(15px, 0);
+        -webkit-transform: translate(15px, 0);
+        -o-transform: translate(15px, 0);
+        -ms-transform: translate(15px, 0);
+    }
+    100% {
+        transform: translate(0px, 0);
+        -webkit-transform: translate(0px, 0);
+        -o-transform: translate(0px, 0);
+        -ms-transform: translate(0px, 0);
+    }
+}
