@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
         hostname: "image.l8.digital",
         pathname: "/**",
       },
+       {
+        protocol: "https",
+        hostname: "s3.us-west-2.amazonaws.com",
+        pathname: "/**",
+      },
     ],
   },
   async headers() {
