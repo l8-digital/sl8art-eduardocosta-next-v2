@@ -79,7 +79,8 @@ const config: Config = {
       fontFamily: {
         sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
         'secondary': ['Bebas Neue'],
-        'tertiary': ['Red Hat Display']
+        'tertiary': ['Red Rose'],
+        'fourth': ['var(--font-modesto-condensed)']
       },
       aspectRatio: {
         auto: 'auto',
@@ -114,7 +115,7 @@ const config: Config = {
           '@screen sm': { maxWidth: '640px' },
           '@screen md': { maxWidth: '768px' },
           '@screen lg': { maxWidth: '1024px' },
-          '@screen xl': { maxWidth: '1280px' },
+          '@screen xl': { maxWidth: '1120px' },
         },
       })
     }),

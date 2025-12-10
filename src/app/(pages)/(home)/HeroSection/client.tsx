@@ -3,10 +3,11 @@ import { useConfigApp } from '@/app/providers/app';
 import style from './style.module.scss';
 import Icon from '@/components/Icon/Icon';
 import Image from 'next/image';
+import SocialMenu from '@/components/SocialMenu/SocialMenu';
 
 export default function HeroSection() {
   const { title, logo } = useConfigApp() ?? {};
-  
+
   return (
 
     <section id="hero" className={style['hero']}>
@@ -15,29 +16,27 @@ export default function HeroSection() {
         <h1 className="text-[0]">
           {title}
 
-          {logo &&
-            <Image
-              src={logo}
-              className={style['hero__logo']}
-              width={416}
-              height={128}
-              alt={`Logo`}
-              priority
-              unoptimized
-            />
-          }
+      
         </h1>
 
         <aside className={style['hero__scroll']}>
-          <div className="font-tertiary text-sm md:text-base text-white tracking-[.1rem] font-normal  mb-2">
+          <div className={style['effect-up']}>
+
+            <Icon name="icon-up" className="h-[0.7rem] stroke-white mt-[0.25rem]" />
+
+          </div>
+          <div className="font-tertiary text-sm md:text-base text-white tracking-[0.1rem] font-normal">
             Deslize para navegar
           </div>
           <div className={style['effect-up']}>
 
-            <Icon name="icon-up" className="h-4 stroke-white"  />
+            <Icon name="icon-up" className="h-[0.7rem] stroke-white mt-[0.3rem]" />
 
           </div>
         </aside>
+      </div>
+      <div className={style['nav-social']}>
+        <SocialMenu />
       </div>
     </section>
   )

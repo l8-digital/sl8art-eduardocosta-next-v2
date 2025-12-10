@@ -10,7 +10,7 @@
         @apply fixed bottom-0 z-[99999] flex gap-0.5 w-full ;
 
         &__item {
-            @apply bg-[#CCCCCC] flex-1 flex flex-col gap-0.5 items-center justify-between py-2.5 text-sm leading-none font-semibold;
+            @apply bg-primary flex-1 flex flex-col gap-0.5 items-center justify-between py-2.5 text-sm leading-none font-semibold;
         }
 
         .o-hamburguer {
@@ -66,15 +66,26 @@
         }
 
         .box-social {
-            @apply bg-[#e2e2e2] px-5 py-8 flex h-full flex-col justify-between;
+  @apply px-5 py-8 flex h-full flex-col justify-between;
 
-            &__title {
-                @apply text-secondary text-3xl font-extrabold tracking-[0.15rem];
-                text-orientation: mixed;
-                writing-mode: vertical-rl;
-                transform: rotate(-180deg);
-            }
-        }
+  /* Gradiente personalizado substituindo a cor sólida */
+  background: linear-gradient(
+    0deg,
+    rgb(23, 15, 7) 0%,
+    rgb(32, 22, 10) 40%,
+    rgb(47, 30, 12) 70%,
+    rgb(40, 25, 10) 80%,
+    rgb(20, 14, 8) 100%
+  );
+
+  &__title {
+    @apply text-[#fcf3dd] text-3xl font-extrabold tracking-[0.15rem];
+    text-orientation: mixed;
+    writing-mode: vertical-rl;
+    transform: rotate(-180deg);
+  }
+}
+
 
         .sing{
             @apply absolute bottom-0 bg-black py-3 w-full;

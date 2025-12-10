@@ -6,7 +6,7 @@
     background-position: center;
     background-repeat: no-repeat;
 
-   
+
 
     &::before {
         @apply content-[''] absolute bottom-0 left-0 h-[40%] w-full;
@@ -25,14 +25,30 @@
     }
 
     &__scroll {
-        @apply flex flex-col justify-center items-center relative;
+        @apply flex flex-row justify-center items-center relative gap-4;
     }
 }
 
+
 .effect-up {
-    -webkit-animation: slide-bottom 1.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
-    animation: slide-bottom 1.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
+  animation: float-down 3.4s ease-in-out infinite;
 }
+
+@keyframes float-down {
+  0% {
+    transform: translateY(-4px); /* começa mais no alto */
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(0px); /* desce */
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-4px); /* volta pro início */
+    opacity: 0.9;
+  }
+}
+
 
 @-webkit-keyframes slide-bottom {
     0% {
@@ -56,12 +72,10 @@
         -webkit-transform: translateY(0);
         transform: translateY(0);
     }
-
     50% {
         -webkit-transform: translateY(10px);
         transform: translateY(10px);
     }
-
     100% {
         -webkit-transform: translateY(0);
         transform: translateY(0);
@@ -69,5 +83,11 @@
 }
 
 .nav-social {
-    @apply px-2 py-3 bg-transparent border-gray rounded-2xl hidden lg:flex z-[1];
+    @apply px-2 py-3 hidden rounded-l-xl lg:flex fixed right-0 top-[30%] z-[3] border-y border-l overflow-hidden;
+
+    &::before {
+        @apply content-[''] absolute inset-0 opacity-80;
+        background-color: #D9A159;
+        z-index: -1; // fica atrás e preserva a borda
+    }
 }

@@ -1,41 +1,67 @@
 .music {
     @apply relative h-full w-full py-12 md:py-16;
-   
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: left !important;
+    background-image: var(--bgdesk-music);
 
-    &::after {
-        @apply content-[''] absolute top-0 left-0 w-full h-[10%] z-[0];
-        background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgb(0, 0, 0)100%);
+    /* 🔥 MOBILE – SOMENTE COR/GRADIENTE */
+    @media (max-width: 767px) {
+        background-image: none !important;
+        background-color: transparent !important;
+        background: linear-gradient(to bottom,
+                rgb(88, 63, 26) 10%,
+                rgb(10, 6, 2) 95%,
+                rgb(10, 6, 2) 100%) !important;
+    }
 
+    /* DESKTOP */
+    @media (min-width: 768px) {
+        background-position: top right !important;
+    }
 
+    &__isActive {
+        &::after {
+            @apply content-[''] absolute top-0 left-0 w-full h-[10%] z-[0];
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgb(0, 0, 0)100%);
+        }
     }
 
     &::before {
-        @apply content-[''] absolute top-0 left-0 w-full h-full z-[0] grayscale bg-cover bg-right md:bg-center;
+        @apply content-[''] absolute bottom-0 left-0 w-full z-[0] h-[10%];
 
-       background-image: var(--bgdesk-music);
+        background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0)100%);
     }
 
-    // &::before {
-    //     @apply content-[''] absolute top-0 left-0 w-full h-[10%] z-[3];
-    //     background-image: linear-gradient(to top, rgba(0,0,0,0) , rgb(0, 0, 0)100%);
-    // }
-
     &__square {
-        // @apply px-4 py-10 w-full md:w-[32rem] flex flex-col justify-center items-center relative gap-4 rounded-lg overflow-hidden ;
-        @apply relative rounded-3xl overflow-hidden px-2 py-4 md:p-8 flex flex-col items-center justify-center gap-6 w-full max-w-[32rem] opacity-90 backdrop-blur md:backdrop-blur-sm border-gray border-[1px] bg-black/80 md:bg-transparent;
+        @apply relative rounded-2xl overflow-hidden flex flex-col items-center justify-center w-full h-[28.5rem] max-w-[31rem] opacity-90 backdrop-blur-sm border-black border-[1px] px-0 py-0;
 
-
+        &::before {
+            @apply content-[''] absolute top-0 left-0 w-full h-full z-[-1] brightness-[180%] rotate-180;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url('/images/fundo-dourado.avif');
+        }
     }
 
     .c-streaming {
         @apply flex justify-center items-center gap-3 md:gap-5 flex-row px-4;
 
         &__link {
-            @apply hover:opacity-80 block text-center transition duration-300 ease-in-out scale-95 hover:scale-100;
+            @apply hover:opacity-80 block text-center transition duration-300 ease-in-out scale-95 hover:scale-100 text-transparent;
 
             svg {
                 @apply mx-auto transition duration-300 ease-in-out;
             }
         }
     }
+
+    .music__logo img {
+        opacity: 0.14;
+        /* transparência */
+        filter: sepia(100%) saturate(900%) hue-rotate(-40deg) brightness(110%);
+        /* cria um tom DOURADO */
+        pointer-events: none;
+    }
+
 }

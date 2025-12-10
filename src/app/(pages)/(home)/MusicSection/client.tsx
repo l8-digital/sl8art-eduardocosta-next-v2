@@ -17,7 +17,7 @@ interface SpotifyPlayerProps {
 }
 
 function SpotifyPlayer({ albumId }: SpotifyPlayerProps) {
-    
+
     const spotifyUrl = `https://open.spotify.com/embed/album/${albumId}?utm_source=generator&theme=0`;
 
     const [hoverDivVisible, setHoverDivVisible] = useState(true);
@@ -155,12 +155,12 @@ function SpotifyPlayer({ albumId }: SpotifyPlayerProps) {
 }
 
 interface Props {
-    social: SocialType  ;
+    social: SocialType;
 }
 
 export default function MusicSection({ social }: Props) {
 
-  const { title } = useConfigApp() ?? {};
+    const { title } = useConfigApp() ?? {};
     useEffect(() => {
         const handleSpotifyPlay = () => { };
         window.addEventListener("spotify-play", handleSpotifyPlay);
@@ -170,68 +170,78 @@ export default function MusicSection({ social }: Props) {
     return (
         <section id='music' className={style['music']} >
             <div className='container relative z-[1]'>
-                <div className={`${style['music__logo']} -mt-28`}>
+                <div className={`${style["music__logo"]} hidden  -mt-28 md:-mt-40 md:flex justify-center items-center w-full`}>
                     <Image
-                        src={'/images/logo-gradient.avif'}
+                        src={'/images/logo-light.avif'}
                         width={1700}
                         height={70}
                         alt={`Logo ${title}`}
+                        className={
+                            "opacity-100 md:opacity-40 hidden md:block !z-[10]"
+                        }
                         priority
+                    />
+                    <Icon
+                        name="icon-logo-light"
+                        className="w-[20rem] pointer-events-none md:hidden block"
                     />
                 </div>
 
-                <div className='w-full h-max flex justify-start items-center gap-0 pt-14 md:pt-20'>
+                <div className="w-full h-max flex justify-start items-center gap-0 pt-0 relative max-md:-top-14 md:pt-20">
                     <div className={style['music__square']}>
 
                         <div className='w-full h-full md:flex'>
                             <SpotifyPlayer albumId={'3eUqQHf9Gb8JI78sVIQvDv'} />
                         </div>
 
-                        <div className='uppercase text-white flex flex-col gap-6 text-center z-[20]'>
-                            <p className='font-tertiary font-medium'>
+                        <div className="uppercase text-black flex flex-col gap-3 text-center z-[20] pb-[1rem]">
+                            <p className="font-tertiary font-medium  text-sm sm:text-lg text-balance">
                                 Disponível também nos streamings:
                             </p>
                             <ul className={style['c-streaming']}>
-                                {social.link_tidal && (
+                                {social.spotify && (
                                     <li>
-                                        <a target='_blank' href={social.link_tidal} className={style['c-streaming__link']}>
-                                            <Icon name="icon-tidal" className="hidden h-5 md:block fill-white" />
-                                            <Icon name="icon-tidal-symbol" className="w-7 h-7 fill-white md:hidden" />
+                                        <a target='_blank' href={social.spotify} className={style['c-streaming__link']}>
+                                            <Icon name="icon-spotify" className="hidden md:flex h-7 fill-black" />
+                                            <Icon name="icon-spotify-mobile" className="md:hidden h-7 fill-black" />
+                                        </a>
+                                    </li>
+                                )}
+                                 {social.link_deezer && (
+                                    <li>
+                                        <a target='_blank' href={social.link_deezer} className={style['c-streaming__link']}>
+                                            <Icon name="icon-deezer" className="hidden md:flex h-7 fill-black" />
+                                            <Icon name="icon-deezer-symbol" className="md:hidden h-7 fill-black" />
+                                        </a>
+                                    </li>
+                                )}
+
+                                  {social.link_suamusica && (
+                                    <li>
+                                        <a target='_blank' href={social.link_suamusica} className={style['c-streaming__link']}>
+                                            <Icon name="icon-sua-musica" className="hidden md:flex h-7 fill-black" />
+                                            <Icon name="icon-suamusica-mobile" className="md:hidden h-7 fill-black" />
                                         </a>
                                     </li>
                                 )}
                                 {social.link_itunes && (
                                     <li>
                                         <a target='_blank' href={social.link_itunes} className={style['c-streaming__link']}>
-                                            <Icon name="icon-apple-music" className="hidden h-5 md:block fill-white" />
-                                            <Icon name="icon-apple-music-symbol" className="w-7 h-7 fill-white md:hidden" />
+                                            <Icon name="icon-apple-music" className="hidden md:flex h-5 fill-black" />
+                                            <Icon name="icon-apple-mobile" className="md:hidden h-7 fill-black" />
                                         </a>
                                     </li>
                                 )}
-                                {social.link_deezer && (
-                                    <li>
-                                        <a target='_blank' href={social.link_deezer} className={style['c-streaming__link']}>
-                                            <Icon name="icon-deezer" className="hidden h-6 md:block fill-white" />
-                                            <Icon name="icon-deezer-symbol" className="w-7 h-7 fill-white md:hidden" />
-                                        </a>
-                                    </li>
-                                )}
-                                {social.amazon_music && (
-                                    <li>
-                                        <a target='_blank' href={social.amazon_music} className={style['c-streaming__link']}>
-                                            <Icon name="icon-amazon" className="hidden h-6 md:block fill-white" />
-                                            <Icon name="icon-amazon-symbol" className="w-7 h-7 fill-white md:hidden" />
-                                        </a>
-                                    </li>
-                                )}
-                                {social.link_youtube_music && (
+                               
+                              
+                                {/* {social.link_youtube_music && (
                                     <li>
                                         <a target='_blank' href={social.link_youtube_music} className={style['c-streaming__link']}>
-                                            <Icon name="icon-youtube-music" className="hidden h-5 md:block fill-white" />
-                                            <Icon name="icon-youtube-music-symbol" className="w-7 h-7 fill-white md:hidden" />
+                                            <Icon name="icon-youtube-music" className="hidden md:flex h-7 fill-black" />
+                                            <Icon name="icon-youtube-music-symbol" className="md:hidden h-7 fill-black" />
                                         </a>
                                     </li>
-                                )}
+                                )} */}
                             </ul>
                         </div>
 

@@ -1,6 +1,6 @@
 .video {
-    @apply bg-black w-full pt-12 md:py-16 relative md:bg-center font-tertiary;
-   background-image: var(--bgdesk-video);
+    @apply bg-black w-full pt-12 md:py-16 relative md:bg-center font-tertiary overflow-hidden;
+
 
 
     // &:before {
@@ -28,7 +28,8 @@
         @apply w-full lg:w-4/12 flex flex-col justify-between gap-12 md:gap-8;
 
         .title {
-            @apply text-white md:text-lg font-semibold uppercase tracking-[.15rem] mb-4;
+            @apply text-white md:text-lg font-light uppercase tracking-[.15rem] mb-4;
+            
 
             &--border-right {
                 @apply flex items-center gap-3;
@@ -54,7 +55,7 @@
         }
 
         .name {
-            @apply text-left text-white hover:text-white/80 text-base md:text-sm md:leading-snug font-bold uppercase tracking-[.0rem] leading-5 relative items-center flex;
+            @apply text-left text-white hover:text-white/80 text-base md:text-sm md:leading-snug font-bold normal-case tracking-[.0rem] leading-5 relative items-center flex;
 
             &--border-left {
 
@@ -117,4 +118,8 @@
             }
         }
     }
+}
+
+.youtube-facade {
+    @apply relative w-full h-full bg-cover bg-center cursor-pointer rounded-lg overflow-hidden flex justify-center items-center;
 }

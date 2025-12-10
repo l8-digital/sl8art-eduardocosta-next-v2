@@ -15,7 +15,7 @@ export default function EventsSection({ data }: Props) {
         <section className={style['calendar-page']}>
             <div className="container md:max-w-4xl">
 
-                <h1 className="o-title italic !font-black text-black text-center md:mb-0 mb-5">Agenda</h1>
+                <h1 className="o-title !font-bold mb-5 md:mb-0 text-center">Agenda</h1>
                 <aside className="grid grid-cols-1 gap-10">
                     {Object.entries(data).map(([index, schedule]) => {
                         const [year, month] = index.split('-');
