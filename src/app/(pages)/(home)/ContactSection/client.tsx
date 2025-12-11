@@ -68,7 +68,7 @@ export default function ContactSection({ data, linkDriver, states }: Props) {
   return (
     <>
       <section id="contact" className={style['contact']} >
-        <div className="container relative italic md:px-16">
+        <div className="container relative  md:px-16">
          
 
           <div className="flex relative">
@@ -109,7 +109,7 @@ export default function ContactSection({ data, linkDriver, states }: Props) {
                               )}
                               {department.phone2 && (
                                 <>
-                                  {' / '}
+                                  {' | '}
                                   <a href={`tel:55${formatPhone(department.phone2)}`}>
                                     {department.phone2}
                                   </a>
