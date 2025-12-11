@@ -2,11 +2,10 @@
 import { useConfigApp } from '@/app/providers/app';
 import style from './style.module.scss';
 import Icon from '@/components/Icon/Icon';
-import Image from 'next/image';
 import SocialMenu from '@/components/SocialMenu/SocialMenu';
 
 export default function HeroSection() {
-  const { title, logo } = useConfigApp() ?? {};
+  const { title } = useConfigApp() ?? {};
 
   return (
 

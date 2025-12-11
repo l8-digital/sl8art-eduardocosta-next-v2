@@ -63,32 +63,32 @@ function SpotifyPlayer({ albumId }: SpotifyPlayerProps) {
 
     useEffect(() => setMounted(true), []);
 
-    useEffect(() => {
-        const stopSpotify = () => {
-            if (!wrapperRef.current) return;
+    // useEffect(() => {
+    //     const stopSpotify = () => {
+    //         if (!wrapperRef.current) return;
 
-            const oldIframe = wrapperRef.current.querySelector("iframe");
-            if (!oldIframe) return;
+    //         const oldIframe = wrapperRef.current.querySelector("iframe");
+    //         if (!oldIframe) return;
 
-            // pega estilo atual, Safari precisa disso
-            const width = oldIframe.offsetWidth;
-            const height = oldIframe.offsetHeight;
+    //         // pega estilo atual, Safari precisa disso
+    //         const width = oldIframe.offsetWidth;
+    //         const height = oldIframe.offsetHeight;
 
-            // cria novo iframe
-            const newIframe = document.createElement("iframe");
-            newIframe.src = spotifyUrl;
-            newIframe.width = String(width);
-            newIframe.height = String(height);
-            newIframe.allow = "encrypted-media";
-            newIframe.style.border = "0";
+    //         // cria novo iframe
+    //         const newIframe = document.createElement("iframe");
+    //         newIframe.src = spotifyUrl;
+    //         newIframe.width = String(width);
+    //         newIframe.height = String(height);
+    //         newIframe.allow = "encrypted-media";
+    //         newIframe.style.border = "0";
 
-            // substitui sem remover o wrapper => Safari não desaparece
-            wrapperRef.current.replaceChild(newIframe, oldIframe);
-        };
+    //         // substitui sem remover o wrapper => Safari não desaparece
+    //         wrapperRef.current.replaceChild(newIframe, oldIframe);
+    //     };
 
-        window.addEventListener("stop-spotify", stopSpotify);
-        return () => window.removeEventListener("stop-spotify", stopSpotify);
-    }, []);
+    //     window.addEventListener("stop-spotify", stopSpotify);
+    //     return () => window.removeEventListener("stop-spotify", stopSpotify);
+    // }, []);
 
     if (!mounted) return null;
 

@@ -1,16 +1,11 @@
-'use client'
-import { SocialType } from '@/types/configuration';
+'use client';
+
 import style from './style.module.scss';
 import Icon from '@/components/Icon/Icon';
 import { useConfigApp } from '@/app/providers/app';
 
-
-
 export default function SocialMenu() {
   const { linksocial } = useConfigApp();
-
-  const getUrl = (value: any): string =>
-    typeof value === 'string' ? value : value?.link || '';
 
   const click = (social: string, url: string) => {
     fetch(`/api/click-social`, {
@@ -32,7 +27,14 @@ export default function SocialMenu() {
             type="button"
             aria-label="Twitter"
             className="block"
-            onClick={() => click('twitter_x', getUrl(linksocial?.twitter))}
+            onClick={() =>
+              click(
+                'twitter_x',
+                typeof linksocial.twitter === 'string'
+                  ? linksocial.twitter
+                  : linksocial.twitter || ''
+              )
+            }
           >
             <Icon name="icon-x-round" className="w-8 h-8 fill-[#fcf3dd] hover:fill-[#503316] md:hidden" />
             <Icon name="icon-x" className="w-7 h-4 fill-[#fcf3dd] hover:fill-[#503316] hidden md:block" />
@@ -47,7 +49,14 @@ export default function SocialMenu() {
             type="button"
             aria-label="Tiktok"
             className="block"
-            onClick={() => click('tiktok', getUrl(linksocial?.tiktok))}
+            onClick={() =>
+              click(
+                'tiktok',
+                typeof linksocial.tiktok === 'string'
+                  ? linksocial.tiktok
+                  : linksocial.tiktok || ''
+              )
+            }
           >
             <Icon name="icon-tiktok-round" className="w-8 h-8 fill-[#fcf3dd] hover:fill-[#503316] md:hidden" />
             <Icon name="icon-tiktok" className="w-7 h-5 fill-[#fcf3dd] hover:fill-[#503316] hidden md:block" />
@@ -62,7 +71,14 @@ export default function SocialMenu() {
             type="button"
             aria-label="Instagram"
             className="block"
-            onClick={() => click('instagram', getUrl(linksocial?.instagram))}
+            onClick={() =>
+              click(
+                'instagram',
+                typeof linksocial.instagram === 'string'
+                  ? linksocial.instagram
+                  : linksocial.instagram || ''
+              )
+            }
           >
             <Icon name="icon-instagram-round" className="w-8 h-8 fill-[#fcf3dd] hover:fill-[#503316] md:hidden" />
             <Icon name="icon-instagram" className="w-7 h-6 fill-[#fcf3dd] hover:fill-[#503316] hidden md:block" />
@@ -77,7 +93,14 @@ export default function SocialMenu() {
             type="button"
             aria-label="Facebook"
             className="block"
-            onClick={() => click('facebook', getUrl(linksocial?.facebook))}
+            onClick={() =>
+              click(
+                'facebook',
+                typeof linksocial.facebook === 'string'
+                  ? linksocial.facebook
+                  : linksocial.facebook || ''
+              )
+            }
           >
             <Icon name="icon-facebook-round" className="w-8 h-8 fill-[#fcf3dd] hover:fill-[#503316] md:hidden" />
             <Icon name="icon-facebook-square" className="w-6 h-5 fill-[#fcf3dd] hover:fill-[#503316] hidden md:block" />
@@ -92,7 +115,14 @@ export default function SocialMenu() {
             type="button"
             aria-label="Youtube"
             className="block"
-            onClick={() => click('youtube', getUrl(linksocial?.youtube))}
+            onClick={() =>
+              click(
+                'youtube',
+                typeof linksocial.youtube === 'string'
+                  ? linksocial.youtube
+                  : linksocial.youtube || ''
+              )
+            }
           >
             <Icon name="icon-youtube-round" className="w-8 h-8 fill-[#fcf3dd] hover:fill-[#503316] md:hidden" />
             <Icon name="icon-youtube-music-symbol" className="w-6 h-6 fill-[#fcf3dd] hover:fill-[#503316] hidden md:block" />

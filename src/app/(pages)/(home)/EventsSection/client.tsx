@@ -1,5 +1,4 @@
 'use client'
-import { Button } from '@/components/Button/Button';
 import style from './style.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
