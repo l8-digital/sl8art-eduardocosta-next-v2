@@ -85,7 +85,7 @@
 .nav-social {
     @apply px-2 py-3 hidden rounded-l-xl lg:flex fixed right-0 top-[30%] z-[3] border-y border-l overflow-hidden;
 
-    &::before {
+    &::before{
         @apply content-[''] absolute inset-0 opacity-80;
         background-color: #D9A159;
         z-index: -1; // fica atrás e preserva a borda

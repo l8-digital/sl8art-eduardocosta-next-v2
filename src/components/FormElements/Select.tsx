@@ -41,7 +41,7 @@ const Select: React.FC<SelectProps> = ({
           if (onChange) onChange(value);
         }}
         onBlur={onValidate}
-        className={`block px-3 py-3.5 min-h-[50px] bg-transparent text-base leading-none w-full text-white border ${error ? 'border-red' : 'border-white-dark'} rounded focus:outline-none focus:ring-0`}
+        className={`block px-5 py-3 min-h-[50px] bg-transparent text-base leading-none w-full text-white border ${error ? 'border-red' : 'border-white-dark'} rounded-full focus:outline-none focus:ring-0`}
       >
         <option value="" disabled>
           {loading ? 'Carregando...' : 'Selecione...'}

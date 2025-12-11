@@ -157,7 +157,7 @@ export default function ContactSection({ data, linkDriver, states }: Props) {
               <div className="relative w-full md:w-max mt-3">
 
                 {showInput &&
-                  <div className="absolute -top-3 left-0 h-full w-full z-[2] ">
+                  <div className="absolute -top-6 left-0 h-full w-full z-[2] ">
                     <FormDriverPassword />
                   </div>
                 }
@@ -176,7 +176,7 @@ export default function ContactSection({ data, linkDriver, states }: Props) {
               </div>
 
               <div className="order-4 justify-start gap-6 flex flex-col md:flex-row w-full items-start md:items-center">
-                <Icon name='icon-ecxpetaculo' className=' relative md:-left-14 w-60 flex  max-md:self-center h-max md:w-72 pointer-events-none' />
+                <Icon name='icon-ecxpetaculo' className=' relative md:-left-4 w-60 flex  max-md:self-center h-max md:w-72 pointer-events-none' />
               </div>
 
             </div>
@@ -191,7 +191,7 @@ export default function ContactSection({ data, linkDriver, states }: Props) {
         show={showModal}
         size="md"
         onClose={() => setShowModal(false)}
-        header={<h2 className="text-white font-secondary text-7xl text-center">Contato</h2>}
+        header={<h2 className="text-white font-secondary text-5xl md:text-7xl text-center">Contato</h2>}
         body={
 
           <FormContact idDepartment={departament} statesProps={states} departmentsProps={departments} closeModal={() => setShowModal(false)} />

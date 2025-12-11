@@ -22,12 +22,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const social = await api.configuration.getSocial() as SocialType[];
   const config = await api.configuration.getPlataformsId() as PlataformsIdTypes[];
   const analitcsId = config[0].analytics_metric;
-  console.log(config)
 
   const ConfigApp = {
     title: social[0].meta_title,
     logo: social[0].logo_cdn,
-    logo_white: social[0].white_logo_cdn
+    logo_white: social[0].white_logo_cdn,
+    linksocial: social[0] as SocialType
   };
 
 
