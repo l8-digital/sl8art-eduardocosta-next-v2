@@ -34,7 +34,7 @@ interface SelectOption {
 
 export default function FormPage({ statesProps, departmentsProps, idDepartment, closeModal }: Props) {
     const { executeRecaptcha } = useGoogleReCaptcha();
-    const [recaptchaReady, setRecaptchaReady] = useState<boolean>(false);
+    const [recaptchaReady, setRecaptchaReady] = useState(false);
 
 
     const [states] = useState<SelectOption[]>(statesProps.map(state => ({
@@ -46,13 +46,13 @@ export default function FormPage({ statesProps, departmentsProps, idDepartment, 
         value: dept.id
     })) : []);
 
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setLoading] = useState(false);
 
     const [cities, setCities] = useState<SelectOption[]>([]);
 
     const [errors, setErrors] = useState<Record<string, string>>({});
 
-    const [loadingCities, setLoadingCities] = useState<boolean>(false);
+    const [loadingCities, setLoadingCities] = useState(false);
 
 
     const [formData, setFormData] = useState({
@@ -99,7 +99,6 @@ export default function FormPage({ statesProps, departmentsProps, idDepartment, 
     }
 
     useEffect(() => {
-
         if (executeRecaptcha) {
             setRecaptchaReady(true);
         }
@@ -107,14 +106,17 @@ export default function FormPage({ statesProps, departmentsProps, idDepartment, 
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-
+        setLoading(true);
 
         if (!executeRecaptcha) {
             console.warn("reCAPTCHA ainda não carregou");
             return;
         }
 
-        setLoading(true);
+
+        const token = await executeRecaptcha("contact_form");
+
+
         try {
 
             await validationSchema.validate(formData, { abortEarly: false });
@@ -125,7 +127,7 @@ export default function FormPage({ statesProps, departmentsProps, idDepartment, 
                     formToSend.append(key, (formData as Record<string, string>)[key]);
                 }
             });
-            const token = await executeRecaptcha("contact_form");
+            console.log('front:', token);
             formToSend.set("recaptcha_token", token);
             const response = await fetch('/api/routes/send-contact', {
                 method: 'POST',
@@ -136,19 +138,19 @@ export default function FormPage({ statesProps, departmentsProps, idDepartment, 
                 Swal.fire({
                     title: "Mensagem Enviada!",
                     html: `
-                        <div class="flex flex-col items-center justify-center mt-2">
-                            <div class="w-14 h-14 rounded-full bg-green flex items-center justify-center mb-4">
-                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>
-                            </div>
-                            <p class="text-gray-700 text-base">
-                                Sua mensagem foi enviada com sucesso!
-                            </p>
-                        </div>
-                    `,
+        <div class="flex flex-col items-center justify-center mt-2">
+            <div class="w-14 h-14 rounded-full bg-green flex items-center justify-center mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            <p class="text-gray-700 text-base">
+                Sua mensagem foi enviada com sucesso!
+            </p>
+        </div>
+    `,
                     showConfirmButton: true,
                     confirmButtonText: "Fechar",
                     confirmButtonColor: "#000",
@@ -167,21 +169,21 @@ export default function FormPage({ statesProps, departmentsProps, idDepartment, 
                 Swal.fire({
                     title: "Não foi possível enviar",
                     html: `
-                        <div class="flex flex-col items-center justify-center mt-2">
-                            <div class="w-14 h-14 rounded-full bg-red flex items-center justify-center mb-4">
-                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </div>
-                            <p class="text-gray-700 text-base">
-                                Ocorreu um problema ao enviar sua mensagem.
-                                <br />
-                                Por favor, tente novamente em alguns instantes.
-                            </p>
-                        </div>
-                    `,
+        <div class="flex flex-col items-center justify-center mt-2">
+            <div class="w-14 h-14 rounded-full bg-red flex items-center justify-center mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </div>
+            <p class="text-gray-700 text-base">
+                Ocorreu um problema ao enviar sua mensagem.
+                <br />
+                Por favor, tente novamente em alguns instantes.
+            </p>
+        </div>
+    `,
                     showConfirmButton: true,
                     confirmButtonText: "OK",
                     confirmButtonColor: "#ef4444", // vermelho tailwind
@@ -302,8 +304,8 @@ export default function FormPage({ statesProps, departmentsProps, idDepartment, 
                         onValidate={() => { }}
                     />
                 </div>
-
-                <Button color="primary" type="submit" className='md:mx-auto md:w-[12rem] rounded-full mt-8' disabled={!recaptchaReady || loading} loading={!recaptchaReady || loading}>
+                <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
+                <Button color="primary" type="submit" className='md:mx-auto md:w-[12rem] rounded-full mt-8' disabled={!recaptchaReady || loading} loading={loading}>
                     Enviar
                 </Button>
             </form>

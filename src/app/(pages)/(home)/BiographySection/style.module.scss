@@ -1,5 +1,5 @@
 .biography {
-    @apply lg:h-screen pb-12 lg:py-16  flex flex-col  relative bg-no-repeat bg-black;
+    @apply h-full py-12 lg:py-16  flex flex-col  relative bg-no-repeat bg-black;
     background-position: center;
     background-size: cover;
 
@@ -8,15 +8,15 @@
         background-color: black !important;
     }
 
-    &::before {
-        @apply content-[''] absolute top-0 md:top-auto md:bottom-0 left-0 h-[20.5rem] lg:h-[90%] w-full;
-        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    // &::before {
+    //     @apply content-[''] absolute top-0 md:top-auto md:bottom-0 left-0 h-full w-full;
+    //     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 
-    }
-    &::after{
-        @apply content-[''] absolute top-0 left-0 w-full h-[10%] z-[3];
-        background-image: linear-gradient(to top, rgba(0,0,0,0) , rgb(0, 0, 0)100%);
-    }
+    // }
+    // &::after{
+    //     @apply content-[''] absolute top-0 left-0 w-full h-[10%] z-[3];
+    //     background-image: linear-gradient(to top, rgba(0,0,0,0) , rgb(0, 0, 0)100%);
+    // }
 
     .image-biography {
         @apply w-full h-full md:hidden relative;
@@ -29,7 +29,7 @@
     }
 
     .card {
-        @apply  lg:flex w-full gap-16 pt-4 md:pt-12;
+        @apply  lg:flex w-full gap-16 pt-4;
 
 
         &__title {
@@ -37,7 +37,7 @@
         }
 
         &__description {
-            @apply text-left md:text-center text-base lg:text-lg text-white h-[17rem] text-balance;
+            @apply text-left md:text-justify text-base lg:text-lg text-white h-[20rem] text-balance;
             overflow: auto;
             direction: ltr;
             padding-right: 1rem;

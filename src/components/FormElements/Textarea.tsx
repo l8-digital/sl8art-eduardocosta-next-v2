@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import Error from '@/components/FormElements/Error';
+// import Error from '@/components/FormElements/Error';
 
 interface TextareaProps {
   modelValue: string;
@@ -41,8 +41,8 @@ const Textarea: React.FC<TextareaProps> = ({
   };
 
   return (
-    <div className={`relative py-3 ${error ? 'form-control has-error' : 'form-control'}`}>
-      <label htmlFor={name} className="px-2 block text-white text-sm font-medium absolute top-[3px] left-2 z-1 bg-black">
+    <div className={`relative pb-3 ${error ? 'form-control has-error' : 'form-control'}`}>
+      <label htmlFor={name} className="block text-white text-xs uppercase font-semibold z-10 mb-1">
         {label}
       </label>
       <textarea
@@ -61,7 +61,7 @@ const Textarea: React.FC<TextareaProps> = ({
           error ? 'border-red' : 'border-white-dark'
         }`}
       />
-      {error && <Error message={error} />}
+      {error && <div className="text-xs text-red-500 mt-1">{error}</div>}
     </div>
   );
 };

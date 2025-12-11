@@ -4,9 +4,10 @@ interface SelectProps {
   modelValue: string;
   name: string;
   label: string;
-  options: string[];
+  options: { label: string; value: string | number }[];
   error?: string;
   multiple?: boolean;
+  loading?: boolean;
   onUpdateModelValue: (value: string) => void;
   onValidate: () => void;
   onChange?: (value: string) => void;
@@ -19,13 +20,14 @@ const Select: React.FC<SelectProps> = ({
   options,
   error,
   multiple,
+  loading = false,
   onUpdateModelValue,
   onValidate,
   onChange,
 }) => {
   return (
-    <div className="w-full relative py-3">
-      <label htmlFor={name} className="px-2 block text-white text-[13px] font-medium absolute top-[3px] left-2 z-1 bg-black">
+    <div className="pb-3 relative">
+      <label htmlFor={name} className="block text-white text-xs uppercase font-semibold z-10 mb-1">
         {label}
       </label>
       <select
@@ -39,14 +41,14 @@ const Select: React.FC<SelectProps> = ({
           if (onChange) onChange(value);
         }}
         onBlur={onValidate}
-        className={`block w-full px-3 pt-3 pb-2.5 text-base border bg-black text-white rounded-lg focus:outline-none focus:ring-0 focus:border-blue appearance-none ${error ? 'border-red' : 'border-white-dark'}  focus:ring-0`}
+        className={`block px-3 py-3.5 min-h-[50px] bg-transparent text-base leading-none w-full text-white border ${error ? 'border-red' : 'border-white-dark'} rounded focus:outline-none focus:ring-0`}
       >
         <option value="" disabled>
-          Selecione...
+          {loading ? 'Carregando...' : 'Selecione...'}
         </option>
         {options.map((option) => (
-          <option key={option} value={option}>
-            {option}
+          <option key={option.value} value={option.value}>
+            {option.label}
           </option>
         ))}
       </select>

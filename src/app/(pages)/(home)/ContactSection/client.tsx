@@ -69,14 +69,7 @@ export default function ContactSection({ data, linkDriver, states }: Props) {
     <>
       <section id="contact" className={style['contact']} >
         <div className="container relative italic md:px-16">
-          <div className='w-full justify-start hidden md:flex'>
-            <Image
-              src={'/images/image-contact.avif'}
-              alt=''
-              fill
-              className='object-contain object-center-bottom'
-            />
-          </div>
+         
 
           <div className="flex relative">
 
@@ -87,7 +80,7 @@ export default function ContactSection({ data, linkDriver, states }: Props) {
                   <h2 className="o-title text-white italic !font-black md:text-end">Contatos</h2>
 
 
-                  <div className="md:mt-2 order-2 md:order-3 grid grid-cols-1 max-md:gap-8 gap-[1rem] md:h-[32rem]">
+                  <div className="md:mt-2 order-2 md:order-3 grid grid-cols-1 max-md:gap-6 gap-[1rem] md:h-[32rem]">
 
                     {departments.map((department, index) => (
 
@@ -145,7 +138,7 @@ export default function ContactSection({ data, linkDriver, states }: Props) {
                           {
                             (department?.email1 || department?.email2) &&
                             <Button color="primary" type="button" onClick={() => handleClickEmail(department as DepartamentType)}
-                              className="mb-8 md:ml-auto rounded-full items-center gap-3 w-full md:w-max flex">
+                              className="md:mb-8 md:ml-auto rounded-full items-center gap-3 w-full md:w-max flex">
                               <Icon name="icon-mail" className="w-6 stroke-black" />
                               ENVIAR E-MAIL
                             </Button>
@@ -161,7 +154,7 @@ export default function ContactSection({ data, linkDriver, states }: Props) {
               </div>
 
 
-              <div className="relative w-full md:w-max">
+              <div className="relative w-full md:w-max mt-3">
 
                 {showInput &&
                   <div className="absolute -top-3 left-0 h-full w-full z-[2] ">

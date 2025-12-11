@@ -23,7 +23,7 @@ export default function EventsSection({ data }: Props) {
                             .toLocaleString('pt-BR', { month: 'long', timeZone: 'UTC' });
                         return (
                             <div key={index}>
-                                <h2 className="uppercase font-secondary text-secondary md:text-black font-bold text-3xl tracking-wider w-full mb-4 text-center md:text-left">
+                                                              <h2 className="uppercase font-secondary text-primary font-bold text-3xl tracking-wider w-full mb-4 text-center md:text-left">
                                     {`${monthName} ${year}`}
                                 </h2>
                                 <div className="grid grid-cols-1 gap-5">

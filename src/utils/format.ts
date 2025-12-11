@@ -18,3 +18,7 @@ export const formatDate = (dateString = '', options: Intl.DateTimeFormatOptions 
     timeZone: 'UTC',
   });
 };
+
+export const formatDay = (day: string): string => {
+  return day.padStart(2, '0');
+};

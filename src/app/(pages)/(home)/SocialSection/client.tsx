@@ -1,6 +1,8 @@
 'use client'
 import Icon from '@/components/Icon/Icon';
-import style from './style.module.scss';;
+import style from './style.module.scss';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function SocialSection() {
 
@@ -8,70 +10,46 @@ export default function SocialSection() {
   return (
 
     <section id="social" className={style['social']}>
-      <div className="container">
-        <div className="flex flex-col md:flex-row md:items-center justify-between mb-8">
-          <h2 className={style['social__title']} >
-            REDES <br />SOCIAIS
-          </h2>
-
-          <div className="flex flex-col lg:flex-row items-center md:items-end md:gap-4" >
-            <p className={`${style['social__subtitle']} text-center md:text-end lg:mb-6`} >
-              <Icon name="icon-youtube-round" className="fill-secondary w-7 h-7 mb-1.5 mx-auto md:mr-0 md:ml-auto" />
-              VISUALIZAÇÕES <br /> NO <br className="hidden lg:block" /> YOUTUBE
-            </p>
-
-            <p className={`${style['social__number']} text-6xl md:text-8xl lg:text-9xl`}>
-              3.300.000
-
-            </p>
-            {/* <NumberAnimation className="social__number md:text-8xl lg:text-9xl" ref="number1" :from="0"
-                :to="viewsYoutube" :format="theFormat" animationPaused @start="true" :duration="2" :delay="0"
-                        easing="linear" /> */}
+      <div className="container relative z-[1]">
+        <div className={style['social__content']}>
+          <div className='h-full w-full flex-wrap flex flex-col px-10 md:px-20 justify-center gap-6 md:gap-12 md:items-start items-center text-center md:text-start z-[1]'>
+            <div className='w-full text-balance '>
+              <h2 className='o-title !text-[2.5rem] md:!text-[6rem]'>BASTIDORES, <br className='hidden md:block' /> INSPIRAÇÕES <br className='hidden md:block' /> E NOVIDADES:</h2>
+            </div>
+            <Link target='_blank' href={'' ?? "/"} className='text-primary underline font-medium font-tertiary text-lg w-full md:w-max md:text-2xl flex w-full transition-all duration-75 ease-in-out hover:text-primary/80 justify-start flex-col'>
+              <p className='md:hidden text-balance'>Saiba tudo no instagram do Eduardo!</p>
+              <p className='hidden md:block'>Saiba tudo</p>
+              <p className='hidden md:block'>no instagram</p>
+              <p className='hidden md:block'>do Eduardo!</p>
+            </Link>
+            <Link target='_blank' href={'' ?? "/"} className=' flex w-max items-center gap-1'>
+              <Icon name='icon-instagram' className='h-6 w-6 fill-white' />
+              <p className='text-white text-lg'>eduardocosta</p>
+              <Image
+                src={'/images/verificado.avif'}
+                alt='Imagem Verificado'
+                width={16}
+                height={16}
+              />
+            </Link>
+          </div>
+          <div className='w-full h-full z-[1] flex relative'>
+            <Image
+              src={'/images/album-social-bg.avif'}
+              alt='Album do instagram'
+              fill
+              className='object-cover rounded-b-[2rem] md:rounded-r-[2rem]'
+            />
           </div>
         </div>
-
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <li className="flex flex-col lg:flex-row items-center lg:items-end gap-3 md:gap-4">
-            <p className={style['social__subtitle']}>
-              <Icon name="icon-spotify-round" className="fill-secondary h-7 mb-1.5 mx-auto md:mx-0" />
-              SEGUIDORES <br /> NO <br className="hidden lg:block" /> SPOTIFY
-            </p>
-
-            <p className={`${style['social__number']} text-6xl md:text-5xl lg:text-7xl`}>
-              4.014.240
-            </p>
-
-            {/* <NumberAnimation className="social__number" ref="number2" :from="0" :to="followersSpotify"
-                        :format="theFormat" animationPaused @start="true" :duration="1.4" :delay="1" easing="linear" /> */}
-          </li>
-
-          <li className="flex flex-col lg:flex-row items-center lg:items-end gap-3 md:gap-4 justify-center" >
-            <p className={`${style['social__subtitle']} text-center md:text-start `} >
-              <Icon name="icon-facebook-round" className="fill-secondary h-7 mb-1.5 mx-auto md:mx-0" />
-              LIKES <br /> NO <br className="hidden lg:block" /> FACEBOOK
-            </p>
-
-            <p className={`${style['social__number']} text-6xl md:text-5xl lg:text-7xl`}>
-              9.468.889
-            </p>
-            {/* <NumberAnimation className="social__number" ref="number3" :from="0" :to="followersFacebook"
-                        :format="theFormat" animationPaused @start="true" :duration="1.6" :delay="2" easing="linear" /> */}
-          </li>
-
-          <li className="flex flex-col lg:flex-row items-center lg:items-end gap-3 md:gap-4 justify-end" >
-            <p className={`${style['social__subtitle']} text-center md:text-start `} >
-              <Icon name="icon-instagram-round" className="fill-secondary h-7 mb-1.5 mx-auto md:mx-0" />
-              SEGUIDORES <br /> NO <br className="hidden lg:block" /> INSTAGRAM
-            </p>
-
-            <p className={`${style['social__number']} text-6xl md:text-5xl lg:text-7xl`}>
-              9.846.840
-            </p>
-
-            {/* <NumberAnimation className="social__number" ref="number4" :from="0" :to="followersInstagram"
-                        :format="theFormat" animationPaused @start="true" :duration="1.8" :delay="3" easing="linear" /> */}
-          </li>
-        </ul>
+      </div>
+      <div className='w-full h-[20rem] md:h-[42rem] absolute bottom-0 right-0 z-[1]  pointer-events-none'>
+        <Image
+          src={'/images/eduardo-social1.webp'}
+          alt='imagem do Eduardo Costa'
+          fill
+          className='object-contain md:object-right-bottom absolute'
+        />
       </div>
     </section>
   )
