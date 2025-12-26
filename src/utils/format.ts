@@ -13,8 +13,8 @@ export const formatDate = (dateString = '', options: Intl.DateTimeFormatOptions 
     return ''; // Retorna uma string vazia se a data for inválida
   }
 
-  return date.toLocaleDateString('pt-BR', {
+ return date.toLocaleDateString('pt-BR', {
     ...options,
-    timeZone: 'UTC',
+    timeZone: 'America/Sao_Paulo',
   });
 };
