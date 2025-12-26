@@ -3,7 +3,7 @@
 @import 'tailwindcss/utilities';
 
 .o-title {
-    @apply text-[3rem] leading-none md:text-[5rem] font-tertiary font-bold uppercase;
+    @apply text-[3rem] leading-none md:text-[5rem] font-fourth font-light uppercase text-primary;
 }
 
 .o-subtitle {
@@ -63,36 +63,32 @@ body{
 }
 
 .is-loading {
-    color: transparent !important;
-    justify-content: center;
-    align-items: center;
-    cursor: not-allowed;
-    position: relative;
-    overflow: hidden;
+  pointer-events: none;
+  position: relative;
+  color: transparent !important;
 }
 
 .is-loading::before {
-    content: '';
-        height: 22px;
-        width: 22px;
-        color: rgba(179, 176, 176, .6);
-        position: absolute;
-        display: inline-block;
-        border: 3px solid;
-        border-radius: 50%;
-        border-right-color: rgba(179, 176, 176, 0);
-        animation: rotate .75s linear infinite;
-        z-index: 1;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.2em;
+  height: 1.2em;
+  margin-top: -0.6em;
+  margin-left: -0.6em;
+  border-radius: 9999px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  animation: spin 0.6s linear infinite;
 }
 
-@keyframes rotate {
-    0% {
-        transform: rotate(0);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
+
  @keyframes floating {
     0% {
         transform: translate(0px, 0);

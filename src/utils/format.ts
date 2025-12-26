@@ -18,3 +18,7 @@ export const formatDate = (dateString = '', options: Intl.DateTimeFormatOptions 
     timeZone: 'America/Sao_Paulo',
   });
 };
+
+export const formatDay = (day: string): string => {
+  return day.padStart(2, '0');
+};

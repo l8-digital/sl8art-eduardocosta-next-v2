@@ -60,7 +60,7 @@ export function Button({
     primary: 'bg-primary text-black',
     'outline-primary': 'border border-primary text-primary',
     'outline-light': 'border border-white text-white',
-    black: 'bg-black text-white hover:bg-primary',
+    black: 'bg-black text-white hover:bg-black/80',
     secondary: 'bg-secondary hover:bg-primary-dark border border-secondary hover:border-primary-dark text-white',
     // ... demais cores
   }[color] || '';
@@ -107,7 +107,7 @@ export function Button({
   }
 
   return (
-    <button
+    <button 
       type={typeof type === 'string' && ['button', 'submit', 'reset'].includes(type)
         ? (type as 'button' | 'submit' | 'reset')
         : 'button'}
@@ -115,6 +115,7 @@ export function Button({
       onClick={onClick}
       className={classes}
       {...rest}
+      aria-label='Botao'
     >
       {children}
     </button>

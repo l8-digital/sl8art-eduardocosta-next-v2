@@ -30,36 +30,19 @@ export default function BiographySection({ data }: Props) {
   return (
 
     <section id="biography" className={style['biography']}>
-      {/* <div className=''>
-            <Image
-                src={`${bgImage}`}
-                alt=''
-                fill
-                className='object-cover h-full w-full !absolute inset-0 left-0'
 
-            />
-        </div> */}
-      <div className={style['image-biography']}>
-        <Image
-          src={'/images/bg-biography-mobile.avif'}
-          alt=''
-          fill
-          className='object-cover h-full w-full !relative'
-          sizes="100%"
-        />
-      </div>
-      <div className="relative pt-3 md:pt-0 h-full ">
-        <div className='flex flex-row h-full justify-center md:justify-between items-center w-full'>
-          <div className="w-[100%] md:flex hidden">
-            <Image
-              src={'/images/imagem-marcos.avif'}
-              alt=''
-              fill
-              className='object-cover h-full w-full !relative'
-            />
-          </div>
-          <div className='container w-full md:w-[45%] h-full flex items-start md:items-center flex-col justify-center'>
-            <h2 className="o-title italic text-left md:text-center !font-black text-white">
+      <div className='flex flex-col md:flex-row h-full justify-center md:justify-between items-center w-full'>
+        <div className="w-[100%] flex">
+          <Image
+            src={'/images/image-biography.avif'}
+            alt=''
+            fill
+            className='object-cover h-full w-full !relative'
+          />
+        </div>
+        <div className='container'>
+          <div className=' w-full md:w-[80%] h-full flex items-start flex-col justify-start'>
+            <h2 className="o-title !font-black">
               {data?.title}
             </h2>
 
@@ -75,19 +58,10 @@ export default function BiographySection({ data }: Props) {
               </div>
             </div>
           </div>
-          <div className="w-[100%] md:flex hidden">
-            <Image
-              src={'/images/imagem-belutti.avif'}
-              alt=''
-              fill
-              className='object-cover h-full w-full !relative'
-            />
-
-          </div>
+         
         </div>
 
-
-      </div >
+      </div>
     </section >
   )
 }

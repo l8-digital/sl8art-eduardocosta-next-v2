@@ -22,7 +22,7 @@ export default function ContactSection({ playlistId, linkyoutube }: Props) {
     const [playlistPage, setPlaylistPage] = useState<YoutubePlaylistResponse["items"]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [page, setPage] = useState(1);
-
+    const [isPlaying, setIsPlaying] = useState(false);
     const videosPerPage = 3;
     const totalPage = Math.ceil(playlistPage.length / videosPerPage);
 
@@ -75,25 +75,41 @@ export default function ContactSection({ playlistId, linkyoutube }: Props) {
                 position: 'relative',
             }}
         >
-            <div className="absolute top-0 left-0 w-full h-full bg-black/30 md:hidden z-[1]" />
+
 
             <div className="container relative z-[2]">
                 <div className="flex flex-col w-full h-full justify-start items-start gap-8">
                     <div className="w-full flex flex-col lg:flex-row gap-12 md:gap-16">
                         <div className="w-full lg:w-8/12 flex items-center z-[2]">
                             <div className={style['video__iframe']}>
-                                {id && (
+                                {id && !isPlaying && (
+                                    // 1. A FACHADA (visível quando isPlaying = false)
+                                    <div
+                                        className={style['youtube-facade']}
+                                        onClick={() => setIsPlaying(true)}
+                                        style={{ backgroundImage: `url(https://img.youtube.com/vi/${id}/hqdefault.jpg)` }}
+                                        title={`Assistir: ${titleVideo}`}
+                                    >
+                                        <div className="w-max p-4 bg-black/20 rounded-lg flex items-center justify-center hover:bg-red transition-all transform duration-150 ease-in-out hover:scale-110">
+                                            <Icon name="icon-play" className="fill-white w-6 h-6" />
+                                        </div>
+                                    </div>
+                                )}
+                                {id && isPlaying && (
                                     <YouTubeEmbed id={id} title={titleVideo} />
                                 )}
                             </div>
                         </div>
 
                         <div className={style['video__info']}>
-                            <div className="w-full">
-                                <p className={style["title"]}>você está assistindo</p>
-                                <p className={`${style["name"]} ${style["name--border-left"]} !text-white md:!text-primary`}>
-                                    {titleVideo || "Carregando..."}
-                                </p>
+                            <div className="w-full ">
+                                <p className={`${style["title"]} relative ${style["name--border-left"]}`}>você está assistindo</p>
+                                <div className={`${style["name"]} flex flex-row w-full`}>
+                                    <Icon name='icon-arrow' className='w-max stroke-white -rotate-90' />
+                                    <p className={`!text-white md:!text-primary`}>
+                                        {titleVideo || "Carregando..."}
+                                    </p>
+                                </div>
                             </div>
 
                             <div className="w-full h-full flex flex-col justify-between">
@@ -143,10 +159,10 @@ export default function ContactSection({ playlistId, linkyoutube }: Props) {
                         </div>
                     </div>
                     {linkyoutube &&
-                        <a target="_blank" href={linkyoutube} className=" hidden md:flex gap-2 md:gap-4 flex-row justify-start items-center w-max h-full text-white transition duration-300 ease-in-out hover:opacity-80">
+                        <a target="_blank" href={linkyoutube} className="hidden md:flex gap-2 md:gap-3 flex-row justify-start  md:items-center w-full md:w-max h-full uppercase text-white font-tertiary transition duration-300 ease-in-out hover:opacity-80 ">
                             <Icon name="icon-youtube-music-symbol" className="w-6 md:w-7 fill-white " />
-                            <div className="text-sm md:text-base">
-                                Inscreva-se no nosso canal oficial do Youtube
+                            <div className="text-sm md:text-base w-full flex-wrap flex">
+                                Inscreva-se no meu canal oficial do Youtube
                             </div>
                         </a>
                     }

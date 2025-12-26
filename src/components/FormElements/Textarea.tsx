@@ -57,7 +57,7 @@ const Textarea: React.FC<TextareaProps> = ({
         onBlur={onValidate}
         onFocus={() => {}}
         ref={textareaRef}
-        className={`block px-3 py-3 text-base leading-none w-full text-white border border-gray rounded-lg focus:outline-none focus:ring-0 focus:border-blue bg-transparent ${
+        className={`block px-3 py-3 text-base leading-none w-full text-white border border-gray rounded-2xl focus:outline-none focus:ring-0 focus:border-blue bg-transparent ${
           error ? 'border-red' : 'border-white-dark'
         }`}
       />

@@ -1,5 +1,26 @@
 .social{
-    @apply w-full pt-12 md:pb-8 md:pt-8 bg-white;
+    @apply w-full pt-12 md:pt-0 bg-black h-full relative;
+
+    &__content {
+        @apply w-full h-[40rem] flex flex-col md:flex-row justify-center items-center border-[1px] border-white rounded-[2rem];
+
+        &::before {
+            /* Suas classes @apply continuam as mesmas */
+            @apply content-[''] absolute top-0 md:top-auto md:bottom-0 left-0 h-[100%] w-full z-[0];
+
+            /*
+                MUDE O GRADIENTE:
+                'to top left' significa que o gradiente VAI EM DIREÇÃO ao canto superior esquerdo.
+                Portanto, ele COMEÇA no canto inferior direito.
+                Aqui, ele começa com preto (1) e vai para transparente (0).
+            */
+            background-image: linear-gradient(
+                to top left, 
+                rgba(0, 0, 0, 1), 
+                rgba(0, 0, 0, 0)
+            );
+        }
+    }
 
     &__title{
         @apply  text-black font-secondary mb-8 md:mb-0 text-6xl md:text-[5.75rem] uppercase;

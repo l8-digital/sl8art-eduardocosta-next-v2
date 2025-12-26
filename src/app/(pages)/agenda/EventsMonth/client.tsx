@@ -15,7 +15,7 @@ export default function EventsSection({ data }: Props) {
         <section className={style['calendar-page']}>
             <div className="container md:max-w-4xl">
 
-                <h1 className="o-title italic !font-black text-black text-center md:mb-0 mb-5">Agenda</h1>
+                <h1 className="o-title !font-bold mb-5 md:mb-0 text-center">Agenda</h1>
                 <aside className="grid grid-cols-1 gap-10">
                     {Object.entries(data).map(([index, schedule]) => {
                         const [year, month] = index.split('-');
@@ -23,7 +23,7 @@ export default function EventsSection({ data }: Props) {
                             .toLocaleString('pt-BR', { month: 'long', timeZone: 'UTC' });
                         return (
                             <div key={index}>
-                                <h2 className="uppercase font-secondary text-secondary md:text-black font-bold text-3xl tracking-wider w-full mb-4 text-center md:text-left">
+                                                              <h2 className="uppercase font-secondary text-primary font-bold text-3xl tracking-wider w-full mb-4 text-center md:text-left">
                                     {`${monthName} ${year}`}
                                 </h2>
                                 <div className="grid grid-cols-1 gap-5">

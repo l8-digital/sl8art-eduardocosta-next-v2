@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Wise Sans';
+    src: url('modesto-condensed-bold.ttf') format('ttf'),
+        url('modesto-condensed.otf') format('otf');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

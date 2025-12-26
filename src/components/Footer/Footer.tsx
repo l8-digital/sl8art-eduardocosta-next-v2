@@ -17,15 +17,15 @@ export function Footer() {
           <div className="flex items-center">
             <div className="w-1/2 border-r-[1px]  pr-4 border-white">
 
-              <p className=" text-[.6875rem] md:text-xs italic text-white font-medium text-end mb-0">&copy; {year} <span className="font-bold">{title}</span>.<br className="hidden md:block" /> Todos os direitos reservados.
+              <p className="text-[0.622rem] sm:text-[.6875rem] md:text-xs italic text-white font-medium text-end mb-0">&copy; {year} <span className="font-bold">{title}</span>.<br className="hidden md:block" /> Todos os direitos reservados.
               </p>
 
             </div>
 
             <div className="w-1/2 flex items-center pl-4">
-              <Icon name="logo-l8" className="w-12 h-10 fill-white" />
+              <Icon name="logo-l8" className="w-9 md:w-12 h-10 fill-white" />
               <div>
-                <p className="pl-2 md:pl-3 mb-0 italic font-medium text-white text-[.6875rem] md:text-xs">
+                <p className="pl-2 md:pl-3 mb-0 italic font-medium text-white text-[.65rem] md:text-xs">
                   Desenvolvido por <br />  L8 Digital</p>
               </div>
             </div>

@@ -202,7 +202,7 @@ const Input = ({
                 ref={inputRef}
                 onBlur={onValidate}
                 onChange={handleChange}
-                className={`block px-3 py-3.5 bg-transparent text-base min-h-[50px] w-full text-white border rounded focus:outline-none ${
+                className={`block px-5 py-3  text-base min-h-[50px] w-full text-white border rounded-full bg-black focus:outline-none ${
                     error ? "border-red" : "border-white-dark"
                 }`}
             />

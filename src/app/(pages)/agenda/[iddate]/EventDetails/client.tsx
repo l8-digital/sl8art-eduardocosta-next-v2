@@ -7,6 +7,11 @@ import { formatDate } from '@/utils/format';
 import { CardEvent } from '@/components/CardEvent/CardEvent';
 import Icon from '@/components/Icon/Icon';
 import { EventDetails } from '@/types/event';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 
 interface Props {
     data: EventDetails;
@@ -14,24 +19,26 @@ interface Props {
     title: string;
 }
 
+const isMobile = window.innerWidth < 768;
+
 export default function EventDetail({ data, linkFanclub, title }: Props) {
 
     const schedule = data ? data.detail : null;
     const calendar = data ? data.data : [];
 
     return (
-       <section className="pt-12 md:pt-32 bg-white">
+        <section className="pt-12 md:pt-32 bg-[#FCF3DD]">
 
             {schedule &&
                 <div className="container pb-12 md:pb-8">
-                    <h1 className="o-title text-center italic !font-black">
+                    <h1 className="o-title text-center !text-black !font-black">
                         <span className="hidden text-[0]">
                             {schedule.city_name} - {schedule.state_uf} |
                         </span>
                         {formatDate(schedule.date, { day: 'numeric', month: 'long' })}
                     </h1>
 
-                     <h2 className="text-lg md:text-lg text-secondary font-semibold uppercase tracking-widest md:tracking-[.25rem] text-center mb-8 md:mb-4">
+                    <h2 className="text-lg md:text-lg text-secondary font-semibold uppercase tracking-widest md:tracking-[.25rem] text-center mb-8 md:mb-4">
                         detalhes do show
                     </h2>
 
@@ -153,27 +160,86 @@ export default function EventDetail({ data, linkFanclub, title }: Props) {
             }
 
 
-            <section className="bg-secondary py-12 md:py-8">
+            <section
+                className="py-12 md:py-8 bg-[#2b1b0a]"
+                style={{
+                    background: `linear-gradient(
+      to bottom,
+      rgb(91, 65, 26) 0%,
+      rgb(64, 44, 10) 10%,
+      rgb(24, 17, 9) 70%,
+      rgb(38, 25, 9) 97%
+    )`
+                }}>
                 <div className="container flex items-end justify-between mb-6 md:mb-8 gap-4">
-                    <h2 className="font-secondary text-primary text-4xl md:text-5xl w-full tracking-[.05em]">
-                        Proximos shows
-                    </h2>
-                    <Button type="a" href="/agenda" color="primary" className="hidden md:flex w-max">
-                        ver mais
-                    </Button>
-                </div>
-                <aside className="container">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-fr gap-6">
-                        {calendar.map((item, idx) => (
-                            <CardEvent key={idx} item={item} index={idx} type="square" />
-                        ))}
-                    </div>
-                    <Button type="a" href="/agendas" color="primary" className="md:hidden mt-8">
-                        ver mais
-                    </Button>
-                </aside>
-            </section>
+                <h2 className="font-secondary text-primary text-4xl md:text-5xl w-full tracking-[.05em]">
+                    Próximos shows
+                </h2>
+                <Button type="a" href="/agenda" color="primary" className="hidden md:flex w-max rounded-full font-normal  !text-sm !py-[0.3rem] !px-4 " >
+                    ver mais
+                </Button>
+            </div>
 
+            <aside className="container">
+                <Swiper
+                    spaceBetween={10}
+                    className='h-[18rem] w-[20rem] md:w-full md:h-full'
+                    direction={'horizontal'}
+                    loop={false}
+                    keyboard={{ enabled: true }}
+                    preventClicks={false}
+                    grabCursor={true}
+                    centeredSlides={false}
+                    slidesPerView={1}
+                    pagination={{ clickable: true }}
+                    modules={[Navigation, Pagination, Keyboard]}
+                    speed={400}
+                    navigation={{
+                        nextEl: isMobile ? '.next-button' : '.next-button__calendar',
+                        prevEl: isMobile ? '.prev-button' : '.prev-button__calendar'
+                    }}
+                    breakpoints={{
+                        640: { slidesPerView: 1 },
+                        768: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 },
+                        1366: { slidesPerView: 3 },
+                        1600: { slidesPerView: 3 },
+                    }}
+                >
+                    {calendar.map((item, index) => (
+                        <SwiperSlide key={index}>
+                            <CardEvent item={item} index={index} />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+                <div className="md:hidden mt-6 c-swiper-nav text-white z-[30]">
+                    <div className=' pt-3'>
+                        <Icon name="icon-indicator" className="c-swiper-nav__indicator fill-white " />
+                    </div>
+                    Deslize para navegar
+                </div>
+                <Button type="a" href="/agenda" color="primary" className="md:hidden mt-8 rounded-full">
+                    ver mais
+                </Button>
+
+                <div className=" hidden md:flex justify-between bottom-32 relative ">
+                    <button
+                        type="button"
+                        className="prev-button__calendar text-[#5F2A1C] hover:text-[#FDF4DD] bg-[#FDF4DD] border border-[#5F2A1C] hover:border-[#FDF4DD] rounded-full p-2  hover:bg-[#261908] relative right-16 "
+                    >
+                        <Icon name="icon-button_left" />
+                    </button>
+
+                    <button
+                        type="button"
+                        className="next-button__calendar text-[#5F2A1C] hover:text-[#FDF4DD] bg-[#FDF4DD] border border-[#5F2A1C] hover:border-[#FDF4DD] rounded-full p-2 hover:bg-[#261908] relative left-16 "
+                    >
+                        <Icon name="icon-button_right" />
+                    </button>
+                </div>
+            </aside>
         </section>
+
+        </section >
     );
 }
