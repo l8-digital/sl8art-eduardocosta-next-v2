@@ -5,15 +5,20 @@ export const formatPhone = (value: string): string => {
   return value.replace(/[()\s-]/g, '');
 };
 
-export const formatDate = (dateString = '', options: Intl.DateTimeFormatOptions = {}): string => {
-  const date = new Date(dateString);
+export const formatDate = (
+  dateString = '',
+  options: Intl.DateTimeFormatOptions = {}
+): string => {
+  if (!dateString) return '';
 
-  // Verifica se a data é válida
+  // força a data para meia-noite no fuso do Brasil
+  const date = new Date(`${dateString}T00:00:00-03:00`);
+
   if (isNaN(date.getTime())) {
-    return ''; // Retorna uma string vazia se a data for inválida
+    return '';
   }
 
- return date.toLocaleDateString('pt-BR', {
+  return date.toLocaleDateString('pt-BR', {
     ...options,
     timeZone: 'America/Sao_Paulo',
   });
