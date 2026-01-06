@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-
+  output: "standalone",
   images: {
     deviceSizes: [320, 480, 640, 968, 1024, 1280, 1600, 1920, 2560],
     minimumCacheTTL: 86400,

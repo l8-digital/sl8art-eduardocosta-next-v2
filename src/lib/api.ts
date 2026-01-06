@@ -65,9 +65,7 @@ export class Api {
 
     try {
       const res = await fetch(endpoint, {
-        headers,
-
-
+        headers, 
       });
 
       if (res.status === 401) {

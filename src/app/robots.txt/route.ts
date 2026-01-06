@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
     const baseUrl = "https://meusite.com";
-
     const robotsTxt = `
 User-agent: *
 Allow: /
