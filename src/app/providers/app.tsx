@@ -4,10 +4,10 @@ import { SocialType } from "@/types/configuration";
 import { createContext, useContext } from "react";
 
 type ConfigApp = {
-  title: string | null;
-  logo: string | null;
-  logo_white: string | null
-  linksocial: SocialType
+  title: string | undefined | null;
+  logo: string | undefined | null;
+  logo_white: string | undefined | null;
+  linksocial: SocialType | undefined | null;
 };
 
 const ConstContext = createContext<ConfigApp>({} as ConfigApp);
