@@ -68,7 +68,7 @@ export class Api {
         headers,
 
         next: {
-          revalidate: 60 * 60 * 3, // 6h
+          revalidate: 60 * 5, // 6h
         },
 
       });
