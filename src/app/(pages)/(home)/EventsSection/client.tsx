@@ -59,23 +59,23 @@ export default function EventsSection({ data }: Props) {
             <div className='container relative z-[1] pt-7 md:pt-10'>
                 <div className='flex flex-col md:flex-col w-full justify-center h-full items-center md:items-end relative md:px-12'>
                     <div className=" flex h-full w-full md:w-[30rem] items-center justify-center gap-7 pb-7 md:flex-col ">
+                        {calendar?.length &&
+                            <div className='w-full h-full flex justify-end max-md:mt-6  md:mb-10 text-center items-end md:items-center'>
 
-                        <div className='w-full h-full flex justify-end max-md:mt-6  md:mb-10 text-center items-end md:items-center'>
+                                <h2 className="o-title text-white !font-light">
+                                    Agenda
+                                </h2>
 
-                            <h2 className="o-title text-white !font-light">
-                                Agenda
-                            </h2>
-
-                            <div className='w-full justify-end flex md:hidden'>
-                                <div className='w-full flex justify-end'>
-                                    <Link href="/agenda"
-                                        className="w-max  text-lg text-primary underline transition-all duration-500 ease-in-out font-tertiary">
-                                        Ver todos
-                                    </Link>
+                                <div className='w-full justify-end flex md:hidden'>
+                                    <div className='w-full flex justify-end'>
+                                        <Link href="/agenda"
+                                            className="w-max  text-lg text-primary underline transition-all duration-500 ease-in-out font-tertiary">
+                                            Ver todos
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
+                        }
 
                     </div>
 
@@ -132,22 +132,27 @@ export default function EventsSection({ data }: Props) {
 
                 </div>
 
+                {calendar?.length &&
+                    <>
+                        <div className="mt-6 c-swiper-nav text-white z-[30] md:hidden">
+                            <div className=' pt-3'>
+                                <Icon name="icon-indicator" className="c-swiper-nav__indicator fill-white " />
+                            </div>
+                            Deslize para navegar
+                        </div>
 
-                <div className="mt-6 c-swiper-nav text-white z-[30] md:hidden">
-                    <div className=' pt-3'>
-                        <Icon name="icon-indicator" className="c-swiper-nav__indicator fill-white " />
-                    </div>
-                    Deslize para navegar
-                </div>
 
-                <div className='w-full justify-end hidden md:flex'>
-                    <div className='w-full md:w-[36rem] flex justify-end md:justify-end pt-3 pr-16'>
-                        <Link href="/agenda"
-                            className="w-max  text-lg text-primary underline transition-all duration-500 ease-in-out font-tertiary">
-                            Ver todos
-                        </Link>
-                    </div>
-                </div>
+                        <div className='w-full justify-end hidden md:flex'>
+                            <div className='w-full md:w-[36rem] flex justify-end md:justify-end pt-3 pr-16'>
+                                <Link href="/agenda"
+                                    className="w-max  text-lg text-primary underline transition-all duration-500 ease-in-out font-tertiary">
+                                    Ver todos
+                                </Link>
+                            </div>
+                        </div>
+                    </>
+                }
+
             </div>
         </section >
 

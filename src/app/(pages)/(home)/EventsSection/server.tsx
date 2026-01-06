@@ -10,9 +10,7 @@ export default async function ServerCalendar() {
 
     const response = await api.events.getLimited(12) as EventType[];
 
-    if (!response || response.length === 0) {
-        return null;
-    }
+  
 
     return <EventsSection data={response} />;
 }
