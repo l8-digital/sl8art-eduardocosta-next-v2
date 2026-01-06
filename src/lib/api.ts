@@ -66,6 +66,7 @@ export class Api {
     try {
       const res = await fetch(endpoint, {
         headers, 
+          cache: "no-store",
       });
 
       if (res.status === 401) {

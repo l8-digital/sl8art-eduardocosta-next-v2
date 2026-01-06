@@ -9,6 +9,7 @@ import type { PlataformsIdTypes, SocialType } from "@/types/configuration";
 import { Providers } from "./providers/providers";
 import { AppProviders } from "./providers/app";
 import { GoogleAnalytics } from "@/config/analitcs";
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await api.configuration.getSocial() as SocialType[];
@@ -21,12 +22,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const themeCss = await getThemeCss();
   const social = await api.configuration.getSocial() as SocialType[];
   const config = await api.configuration.getPlataformsId() as PlataformsIdTypes[];
-  const analitcsId = config[0].analytics_metric;
+  const analitcsId = config[0]?.analytics_metric;
 
   const ConfigApp = {
-    title: social[0].meta_title,
-    logo: social[0].logo_cdn,
-    logo_white: social[0].white_logo_cdn,
+    title: social[0]?.meta_title,
+    logo: social[0]?.logo_cdn,
+    logo_white: social[0]?.white_logo_cdn,
     linksocial: social[0] as SocialType
   };
 
