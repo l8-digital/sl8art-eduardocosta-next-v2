@@ -66,10 +66,7 @@ export class Api {
     try {
       const res = await fetch(endpoint, {
         headers,
-
-        next: {
-          revalidate: 60 * 5, // 6h
-        },
+        cache: "no-store",
 
       });
 
