@@ -26,6 +26,28 @@ export class Api {
     }
   }
 
+  private buildEndpoint(
+    path: string,
+    params: Params,
+    params2: Params[]
+  ) {
+    let endpoint = this.baseUrl + path;
+
+    if (params) {
+      if (Array.isArray(params)) {
+        endpoint += "/" + params.join(",");
+      } else {
+        endpoint += "/" + String(params);
+      }
+    }
+
+    if (params2.length > 0) {
+      endpoint += "/" + params2.map(String).join("/");
+    }
+
+    return endpoint;
+  }
+
   async get<T = unknown>(
     path: string,
     params: Params = "",
@@ -33,42 +55,37 @@ export class Api {
   ): Promise<T | false> {
     const token = await getToken();
 
-    const headers = {
-      "Accept": "application/json",
+    const endpoint = this.buildEndpoint(path, params, params2);
+
+    const headers: HeadersInit = {
+      Accept: "application/json",
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     };
 
-    let endpoint = this.baseUrl + path;
-
-    if (params) {
-      if (Array.isArray(params)) {
-        endpoint += "/" + params.join(",");
-      } else {
-        endpoint += "/" + params;
-      }
-    }
-
-    if (params2.length > 0) {
-      endpoint += "/" + params2.join("/");
-    }
-
     try {
-      const response: AxiosResponse<T> = await axios.get(endpoint, { headers });
+      const res = await fetch(endpoint, {
+        headers,
 
-      if (response.status === 200 || response.status === 201) {
-        return response.data;
-      }
+        next: {
+          revalidate: 60 * 60 * 3, // 6h
+        },
 
-      return false;
+      });
 
-    } catch (error: unknown) {
-      if (hasAxiosResponse(error) && error.response.status === 401) {
+      if (res.status === 401) {
         resetToken();
         await authenticate();
         return this.get<T>(path, params, ...params2);
       }
 
+      if (!res.ok) {
+        return false;
+      }
+
+      return (await res.json()) as T;
+
+    } catch {
       return false;
     }
   }
