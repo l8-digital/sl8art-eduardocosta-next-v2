@@ -22,7 +22,15 @@ const nextConfig: NextConfig = {
 
   async headers() {
     return [
-      // Cache para imagens
+      {
+        source: '/_next/image',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
       {
         source: "/images/:path*",
         headers: [
