@@ -63,13 +63,11 @@ app-next/
 │   ├── components/                  # Componentes reutilizáveis (Botões, Cards, Inputs)
 │   │
 │   ├── config/                      # Configurações globais e técnicas
-│   │   ├── metadata.tsx             # Centraliza títulos e descrições para SEO
-│   │   ├── theme.ts                 # Define cores, espaçamentos e tokens visuais
-│   │   ├── fonts.ts                 # Carregamento e configuração de fontes do Google
 │   │   ├── analitcs.tsx             # Integração com Google Analytics/Tag Manager
-│   │   └── preload.tsx              # Arquivo arquivo para antecipar o carregamento de arquivos críticos
-│   │
-│   ├── fonts/                       # Arquivos de fontes locais
+│   │   ├── fonts.ts                 # Carregamento e configuração de fontes do Google
+│   │   ├── metadata.tsx             # Centraliza títulos e descrições para SEO
+│   │   ├── preload.tsx              # Arquivo para antecipar o carregamento de arquivos críticos
+│   │   └── theme.ts                 # Define cores, espaçamentos e tokens visuais
 │   │
 │   ├── lib/                         # Abstrações de bibliotecas (Axios, Auth, Env)
 │   │
@@ -79,12 +77,14 @@ app-next/
 │   │
 │   ├── types/                       # Definições de interfaces do TypeScript (Interfaces de dados)
 │   │
-│   └── utils/                       # Funções utilitárias e ajudantes
-│       ├── format.ts                # Formatação de datas, moedas e strings
-│       ├── cache.ts                 # Gerenciamento inteligente de memória/cache
-│       ├── youtube.ts               # Auxilia na busca e tratamento de vídeos do YouTube
-│       ├── flickr.ts                # Ajuda na integração e busca de fotos do Flickr
-│       └── baseUrl.ts               # Define a URL base da API dependendo do ambiente
+│   ├── utils/                       # Funções utilitárias e ajudantes
+│   │   ├── baseUrl.ts               # Define a URL base da API dependendo do ambiente
+│   │   ├── cache.ts                 # Gerenciamento inteligente de memória/cache
+│   │   ├── flickr.ts                # Ajuda na integração e busca de fotos do Flickr
+│   │   ├── format.ts                # Formatação de datas, moedas e strings
+│   │   └── youtube.ts               # Auxilia na busca e tratamento de vídeos do YouTube
+│   │
+│   └── global.d.ts                  # Definições globais de tipos do TypeScript
 │
 ├── scripts/                         # Automações de desenvolvimento e build
 │
@@ -110,19 +110,19 @@ Definições de tipos TypeScript compartilhadas em toda a aplicação, garantind
 
 #### `src/config/`
 Centraliza as configurações globais que ditam o comportamento e a identidade do site:
-- **`metadata.tsx`**: Define os títulos, descrições e imagens (Open Graph) para o Google e redes sociais.
-- **`theme.ts`**: Onde as cores padrão e tokens visuais são definidos para garantir consistência.
-- **`fonts.ts`**: Configura o carregamento das fontes do Google via Next.js.
 - **`analitcs.tsx`**: Gerencia a inserção dos scripts de rastreamento (GA4/GTM).
+- **`fonts.ts`**: Configura o carregamento das fontes do Google via Next.js.
+- **`metadata.tsx`**: Define os títulos, descrições e imagens (Open Graph) para o Google e redes sociais.
 - **`preload.tsx`**: Otimiza o carregamento inicial de recursos críticos.
+- **`theme.ts`**: Onde as cores padrão e tokens visuais são definidos para garantir consistência.
 
 #### `src/utils/`
 Pequenas ferramentas que facilitam tarefas repetitivas em todo o código:
-- **`format.ts`**: Funções para formatar datas (ex: PT-BR), moedas e textos.
-- **`cache.ts`**: Lógica para salvar dados temporariamente e evitar requisições duplicadas.
-- **`youtube.ts`**: Trata URLs e dados vindos da API do YouTube.
-- **`flickr.ts`**: Faz o meio de campo para buscar e formatar fotos do Flickr.
 - **`baseUrl.ts`**: Garante que o site saiba se deve falar com o servidor de teste ou de produção.
+- **`cache.ts`**: Lógica para salvar dados temporariamente e evitar requisições duplicadas.
+- **`flickr.ts`**: Faz o meio de campo para buscar e formatar fotos do Flickr.
+- **`format.ts`**: Funções para formatar datas (ex: PT-BR), moedas e textos.
+- **`youtube.ts`**: Trata URLs e dados vindos da API do YouTube.
 
 ---
 
