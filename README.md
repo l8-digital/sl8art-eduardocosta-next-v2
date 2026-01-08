@@ -1,36 +1,300 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js v2
 
-## Getting Started
+Aplicação web moderna e performática desenvolvida com Next.js 15, React 19 e TypeScript, focada em oferecer uma experiência de usuário excepcional com otimizações avançadas de SEO, performance e segurança.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 📋 Índice
+
+- [Visão Geral](#-visão-geral)
+- [Arquitetura do Projeto](#-arquitetura-do-projeto)
+- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [Estrutura de Pastas](#-estrutura-de-pastas)
+- [Pré-requisitos](#-pré-requisitos)
+- [Instalação](#-instalação)
+- [Configuração](#-configuração)
+- [Executando o Projeto](#-executando-o-projeto)
+- [Build e Deploy](#-build-e-deploy)
+- [Funcionalidades Principais](#-funcionalidades-principais)
+- [Padrões de Desenvolvimento](#-padrões-de-desenvolvimento)
+- [Performance e Otimizações](#-performance-e-otimizações)
+- [Segurança](#-segurança)
+- [Scripts Disponíveis](#-scripts-disponíveis)
+
+---
+
+
+## 🏗️ Arquitetura do Projeto
+
+### Padrão Arquitetural
+
+O projeto segue uma **arquitetura híbrida** moderna combinando:
+
+1. **App Router (Next.js 15)**: Utiliza o novo sistema de roteamento baseado em pastas do Next.js.
+2. **Server Components**: Componentes renderizados no servidor para melhor performance.
+3. **Client Components**: Componentes interativos renderizados no cliente.
+4. **API Routes**: Endpoints RESTful para comunicação com backend.
+5. **Server Actions**: Funções server-side para manipulação de dados.
+
+### Padrão Server vs Client nas Seções
+Para garantir o máximo de performance e SEO, utilizamos um padrão de separação nas seções das páginas:
+- **`server.tsx`**: É o componente principal da seção. Ele roda no servidor, faz as buscas de dados necessárias (fetching) e passa os dados para o componente visual.
+- **`client.tsx`**: Contém apenas a parte interativa (como botões, formulários ou sliders) que precisa rodar no navegador do usuário.
+
+---
+
+## 📁 Estrutura de Pastas
+
+```
+app-next/
+│
+├── public/                          # Arquivos estáticos públicos (Imagens, Vídeos, Favicons)
+│
+├── src/                             # Código fonte da aplicação
+│   │
+│   ├── app/                         # App Router (Next.js 15)
+│   │   ├── (pages)/                 # Páginas do site (Home, Agenda, Notícias)
+│   │   ├── api/                     # Endpoints de API (Interface entre Frontend e Backend)
+│   │   ├── providers/               # Contextos do React (ex: Autenticação, Tema)
+│   │   ├── layout.tsx               # Layout base comum a todas as páginas
+│   │   ├── robots.txt/              # Regras para buscadores (SEO)
+│   │   └── sitemap.xml/             # Mapa do site para o Google (SEO)
+│   │
+│   ├── components/                  # Componentes reutilizáveis (Botões, Cards, Inputs)
+│   │
+│   ├── config/                      # Configurações globais e técnicas
+│   │   ├── metadata.tsx             # Centraliza títulos e descrições para SEO
+│   │   ├── theme.ts                 # Define cores, espaçamentos e tokens visuais
+│   │   ├── fonts.ts                 # Carregamento e configuração de fontes do Google
+│   │   ├── analitcs.tsx             # Integração com Google Analytics/Tag Manager
+│   │   └── preload.tsx              # Arquivo arquivo para antecipar o carregamento de arquivos críticos
+│   │
+│   ├── fonts/                       # Arquivos de fontes locais
+│   │
+│   ├── lib/                         # Abstrações de bibliotecas (Axios, Auth, Env)
+│   │
+│   ├── server/                      # Lógica exclusiva de servidor (Server Actions)
+│   │
+│   ├── styles/                      # Estilos globais (CSS / Sass)
+│   │
+│   ├── types/                       # Definições de interfaces do TypeScript (Interfaces de dados)
+│   │
+│   └── utils/                       # Funções utilitárias e ajudantes
+│       ├── format.ts                # Formatação de datas, moedas e strings
+│       ├── cache.ts                 # Gerenciamento inteligente de memória/cache
+│       ├── youtube.ts               # Auxilia na busca e tratamento de vídeos do YouTube
+│       ├── flickr.ts                # Ajuda na integração e busca de fotos do Flickr
+│       └── baseUrl.ts               # Define a URL base da API dependendo do ambiente
+│
+├── scripts/                         # Automações de desenvolvimento e build
+│
+├── .env.example                     # Modelo oficial das chaves de configuração
+├── next.config.ts                   # Configurações fundamentais do Next.js
+├── tailwind.config.ts               # Regras e customizações do design do Tailwind
+└── tsconfig.json                    # Regras de comportamento do TypeScript
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Descrição das Principais Pastas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#### `src/app/`
+Contém toda a estrutura de roteamento do Next.js 15 usando o App Router. Cada pasta representa uma rota da aplicação.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### `src/components/`
+Componentes React reutilizáveis organizados por funcionalidade. Cada componente possui sua própria pasta com arquivos de implementação e estilos.
 
-## Learn More
+#### `src/server/`
+Lógica server-side, incluindo server actions, funções de busca de dados e integrações com APIs externas.
 
-To learn more about Next.js, take a look at the following resources:
+#### `src/types/`
+Definições de tipos TypeScript compartilhadas em toda a aplicação, garantindo type-safety.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### `src/config/`
+Centraliza as configurações globais que ditam o comportamento e a identidade do site:
+- **`metadata.tsx`**: Define os títulos, descrições e imagens (Open Graph) para o Google e redes sociais.
+- **`theme.ts`**: Onde as cores padrão e tokens visuais são definidos para garantir consistência.
+- **`fonts.ts`**: Configura o carregamento das fontes do Google via Next.js.
+- **`analitcs.tsx`**: Gerencia a inserção dos scripts de rastreamento (GA4/GTM).
+- **`preload.tsx`**: Otimiza o carregamento inicial de recursos críticos.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+#### `src/utils/`
+Pequenas ferramentas que facilitam tarefas repetitivas em todo o código:
+- **`format.ts`**: Funções para formatar datas (ex: PT-BR), moedas e textos.
+- **`cache.ts`**: Lógica para salvar dados temporariamente e evitar requisições duplicadas.
+- **`youtube.ts`**: Trata URLs e dados vindos da API do YouTube.
+- **`flickr.ts`**: Faz o meio de campo para buscar e formatar fotos do Flickr.
+- **`baseUrl.ts`**: Garante que o site saiba se deve falar com o servidor de teste ou de produção.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ✅ Pré-requisitos
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Antes de começar, certifique-se de ter instalado em sua máquina:
+
+- **Node.js** versão 18.x ou superior ([Download](https://nodejs.org/))
+- **npm** versão 9.x ou superior (incluído com Node.js)
+- **Git** ([Download](https://git-scm.com/))
+- **Editor de código** (recomendado: [VS Code](https://code.visualstudio.com/))
+
+### Verificar Instalações
+
+```bash
+# Verificar versão do Node.js
+node --version
+# Saída esperada: v18.x.x ou superior
+
+# Verificar versão do npm
+npm --version
+# Saída esperada: 9.x.x ou superior
+
+# Verificar versão do Git
+git --version
+# Saída esperada: git version 2.x.x
+```
+
+---
+
+## 📦 Instalar Dependências
+
+```bash
+# Instalar todas as dependências do projeto
+npm install
+```
+
+Este comando irá:
+- Baixar todas as dependências listadas em `package.json`
+- Criar a pasta `node_modules/`
+- Gerar o arquivo `package-lock.json` (se não existir)
+
+**Tempo estimado**: 2-5 minutos (dependendo da velocidade da internet)
+
+## ⚙️ Configuração
+
+### Variáveis de Ambiente
+
+O projeto utiliza variáveis de ambiente para configurações sensíveis e específicas do ambiente.
+
+#### Passo 1: Criar arquivo `.env`
+
+```bash
+# Copiar o arquivo de exemplo
+cp .env.example .env
+```
+
+#### Passo 2: Configurar Variáveis
+
+Edite o arquivo `.env` e configure as seguintes variáveis:
+
+```env
+# ===================================
+# CONFIGURAÇÕES GERAIS
+# ===================================
+NODE_ENV=development
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+
+# ===================================
+# AWS S3 (Armazenamento de Imagens)
+# ===================================
+AWS_ACCESS_KEY_ID=sua_access_key_aqui
+AWS_SECRET_ACCESS_KEY=sua_secret_key_aqui
+AWS_REGION=us-east-1
+AWS_S3_BUCKET_NAME=nome_do_bucket
+
+# ===================================
+# NEXTAUTH (Autenticação)
+# ===================================
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=gere_uma_string_secreta_aleatoria
+
+# ===================================
+# GOOGLE RECAPTCHA
+# ===================================
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=sua_site_key_aqui
+RECAPTCHA_SECRET_KEY=sua_secret_key_aqui
+
+# ===================================
+# API EXTERNA
+# ===================================
+NEXT_PUBLIC_API_URL=https://api.exemplo.com
+API_TOKEN=seu_token_de_api_aqui
+
+# ===================================
+# CDN
+# ===================================
+NEXT_PUBLIC_CDN_URL=https://build.l8.digital
+NEXT_PUBLIC_IMAGE_CDN_URL=https://image.l8.digital
+```
+
+---
+
+## 🚀 Executando o Projeto
+
+### Modo Desenvolvimento
+
+```bash
+# Iniciar servidor de desenvolvimento com Turbopack
+npm run dev
+```
+
+O servidor estará disponível em: **http://localhost:3000**
+
+## 🏭 Build e Deploy
+
+### Build de Produção
+
+```bash
+# Criar build otimizado para produção
+npm run build
+```
+
+Este comando irá:
+1. Executar o script `prebuild` (upload de assets para CDN)
+2. Compilar TypeScript
+3. Otimizar código JavaScript
+4. Gerar páginas estáticas (SSG)
+5. Preparar Server Components
+6. Otimizar imagens
+7. Criar bundle final
+
+**Tempo estimado**: 2-5 minutos
+
+### Executar Build Localmente
+
+```bash
+# Iniciar servidor de produção
+npm run start
+```
+
+O servidor de produção estará disponível em: **http://localhost:3000**
+
+### Deploy
+
+#### Opção 1: Docker
+
+```bash
+# Build da imagem Docker
+docker build -t sl8art-app .
+
+# Executar container
+docker run -p 3000:3000 sl8art-app
+```
+
+#### Opção 3: Servidor Node.js
+
+```bash
+# No servidor, após clonar o repositório
+npm install
+npm run build
+npm run start
+```
+
+### Padrões de Commit
+
+```
+feat: Adiciona nova funcionalidade
+fix: Corrige um bug
+docs: Atualiza documentação
+style: Mudanças de formatação
+refactor: Refatoração de código
+test: Adiciona ou atualiza testes
+chore: Tarefas de manutenção
+```
