@@ -39,7 +39,7 @@ export function createMetadata(data: ConfigurationTypes): Metadata {
       canonical: '/',
       languages: { 'pt-BR': '/' },
     },
-    authors: [{ name: 'Valepix' }],
+    authors: [{ name: 'L8 Digital' }],
     metadataBase: new URL(`https://${data?.site ?? 'localhost:3000'}`),
     openGraph: {
       title: metadata.meta_title ? metadata.meta_title : '',
