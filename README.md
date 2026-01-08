@@ -186,42 +186,42 @@ Edite o arquivo `.env` e configure as seguintes variáveis:
 
 ```env
 # ===================================
-# CONFIGURAÇÕES GERAIS
+# API Configuration
 # ===================================
-NODE_ENV=development
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_API_ENDPOINT_AUTH="https://api.exemplo.com/api/v1/auth"
+NEXT_API_ENDPOINT="https://api.exemplo.com/api/v1/site/"
 
 # ===================================
-# AWS S3 (Armazenamento de Imagens)
+# Client ID
 # ===================================
-AWS_ACCESS_KEY_ID=sua_access_key_aqui
-AWS_SECRET_ACCESS_KEY=sua_secret_key_aqui
-AWS_REGION=us-east-1
-AWS_S3_BUCKET_NAME=nome_do_bucket
+NEXT_API_CLIENT_ID="SEU_CLIENT_ID"
+NEXT_API_SECRET="SEU_CLIENT_SECRET"
 
 # ===================================
-# NEXTAUTH (Autenticação)
+# Configuração do Bucket AWS 
 # ===================================
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=gere_uma_string_secreta_aleatoria
+NEXT_PUBLIC_ASSET_URL="https://assets.exemplo.com"
+NEXT_AWS_ACCESS_KEY_ID="SUA_AWS_ACCESS_KEY_ID"
+NEXT_AWS_SECRET_ACCESS_KEY="SUA_AWS_SECRET_ACCESS_KEY"
+NEXT_AWS_DEFAULT_REGION="us-east-1"
+NEXT_AWS_BUCKET_NAME="nome-do-bucket"
+NEXT_AWS_USE_PATH_STYLE_ENDPOINT=false
+NEXT_AWS_CLOUDFRONT_DISTRIBUTION_ID="ID_DISTRIBUTION"
+UPLOAD_ENABLED=true
 
 # ===================================
-# GOOGLE RECAPTCHA
+# Google reCAPTCHA
 # ===================================
-NEXT_PUBLIC_RECAPTCHA_SITE_KEY=sua_site_key_aqui
-RECAPTCHA_SECRET_KEY=sua_secret_key_aqui
+NEXT_PUBLIC_RECAPTCHA_KEY="SUA_RECAPTCHA_SITE_KEY"
+NEXT_RECAPTCHA_SECRET="SUA_RECAPTCHA_SECRET_KEY"
 
 # ===================================
-# API EXTERNA
+# YouTube API
 # ===================================
-NEXT_PUBLIC_API_URL=https://api.exemplo.com
-API_TOKEN=seu_token_de_api_aqui
+NEXT_YOUTUBE_INFO="ID_DO_CANAL"
+NEXT_YOUTUBE_PLAYLIST="ID_DA_PLAYLIST"
+NEXT_YOUTUBE_PLAYLIST_LIMIT=10
 
-# ===================================
-# CDN
-# ===================================
-NEXT_PUBLIC_CDN_URL=https://build.l8.digital
-NEXT_PUBLIC_IMAGE_CDN_URL=https://image.l8.digital
 ```
 
 ---
