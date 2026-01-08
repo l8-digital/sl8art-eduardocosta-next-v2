@@ -9,7 +9,7 @@ import type { ConfigurationTypes, PlataformsIdTypes, SocialType } from "@/types/
 import { GoogleAnalytics } from "@/config/analitcs";
 import { api } from "../api";
 import { AppProviders } from "../providers/app";
-import { Providers } from "../providers/providers";
+import { ReCaptchaProvider } from "../providers/recaptcha";
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await api.configuration.getAll() as ConfigurationTypes;
@@ -37,9 +37,9 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
           <GoogleAnalytics gaId={analitcsId} />
         }
         <AppProviders value={ConfigApp}>
-          <Providers>
+          <ReCaptchaProvider>
             {children}
-          </Providers>
+          </ReCaptchaProvider>
         </AppProviders>
 
 
