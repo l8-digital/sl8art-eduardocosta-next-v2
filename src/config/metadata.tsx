@@ -1,5 +1,5 @@
 export const dynamic = "force-dynamic";
-import { SocialType } from "@/types/configuration";
+import { ConfigurationTypes, SocialType } from "@/types/configuration";
 import type { Metadata } from "next";
 
 export interface SeoConfig {
@@ -11,10 +11,10 @@ export interface SeoConfig {
 
 }
 
-export function createMetadata(data: SocialType): Metadata {
-  const favicon = data.favicon_cdn ?? "" ;
+export function createMetadata(data: ConfigurationTypes): Metadata {
 
-  const metadata = data;
+  const metadata = data.basic_configurations[0];
+  const favicon = metadata.favicon_cdn ?? "";
 
   return {
 
@@ -40,7 +40,7 @@ export function createMetadata(data: SocialType): Metadata {
       languages: { 'pt-BR': '/' },
     },
     authors: [{ name: 'Valepix' }],
-    metadataBase: new URL('https://valepix.com.br'),
+    metadataBase: new URL(`https://${data?.site ?? 'localhost:3000'}`),
     openGraph: {
       title: metadata.meta_title ? metadata.meta_title : '',
       description: metadata.meta_description ? metadata.meta_description : '',
