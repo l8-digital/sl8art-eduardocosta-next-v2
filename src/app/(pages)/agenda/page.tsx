@@ -11,7 +11,6 @@ export default async function EventsServer() {
 
     const response = await api.events.getMonth() as EventsByMonth;
 
-
     return (
         <main>
             <EventsMonth data={response} />

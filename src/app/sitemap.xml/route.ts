@@ -8,7 +8,6 @@ export async function GET() {
   const data = await api.configuration.getAll() as ConfigurationTypes;
   const baseUrl = 'https://' + data?.site;
 
-
   const menu_schedule = true;
   const menu_news = true;
 

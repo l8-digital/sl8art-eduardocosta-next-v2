@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server";
+import { api } from "../api";
+import { ConfigurationTypes } from "@/types/configuration";
 
 export async function GET() {
-    const baseUrl = "https://meusite.com";
+    const data = await api.configuration.getAll() as ConfigurationTypes;
+    const baseUrl = 'https://' + data?.site;
+    
     const robotsTxt = `
 User-agent: *
 Allow: /
