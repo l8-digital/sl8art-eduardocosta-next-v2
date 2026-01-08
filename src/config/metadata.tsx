@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { SocialType } from "@/types/configuration";
 import type { Metadata } from "next";
 
@@ -11,10 +12,9 @@ export interface SeoConfig {
 }
 
 export function createMetadata(data: SocialType): Metadata {
+  const favicon = data.favicon_cdn ?? "" ;
 
-
-  const favicon = data.favicon_cdn ?? "";
-  const metadata = data ;
+  const metadata = data;
 
   return {
 
@@ -22,32 +22,47 @@ export function createMetadata(data: SocialType): Metadata {
       default: metadata.meta_title ?? '',
       template: `%s | ${metadata.meta_title}`,
     },
-
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
     description: metadata.meta_description,
     keywords: metadata.meta_keywords,
-
+    alternates: {
+      canonical: '/',
+      languages: { 'pt-BR': '/' },
+    },
+    authors: [{ name: 'Valepix' }],
+    metadataBase: new URL('https://valepix.com.br'),
     openGraph: {
-      title: metadata.meta_title ?? '',
-      description: metadata.meta_description ?? '',
+      title: metadata.meta_title ? metadata.meta_title : '',
+      description: metadata.meta_description ? metadata.meta_description : '',
       url: "/",
       type: "website",
       locale: "pt_BR",
-      siteName: metadata.meta_title ?? '',
+      siteName: metadata.meta_title ? metadata.meta_title : '',
       images: [
         {
-          url: metadata.meta_image_cdn ?? '',
+          url: metadata.meta_image_cdn ? metadata.meta_image_cdn : '',
           width: 1200,
           height: 630,
-          alt: metadata.meta_title ?? '',
+          alt: metadata.meta_title ? metadata.meta_title : '',
         },
       ],
     },
 
     twitter: {
       card: "summary_large_image",
-      title: metadata.meta_title ?? '',
-      description: metadata.meta_description ?? '',
-      images: [metadata.meta_image_cdn ?? ''],
+      title: metadata.meta_title ? metadata.meta_title : '',
+      description: metadata.meta_description ? metadata.meta_description : '',
+      images: [metadata.meta_image_cdn ? metadata.meta_image_cdn : '',],
     },
 
     icons: {
