@@ -45,6 +45,15 @@ Para garantir o máximo de performance e SEO, utilizamos um padrão de separaç�
 
 ## 📁 Estrutura de Pastas
 
+No Next.js, as rotas são configuradas através de diretórios localizados em /src/app.
+Cada pasta representa um segmento de rota, e o nome do diretório define como a URL será interpretada.
+
+- **`(namegroup)`**: Agrupa rotas sem alterar a URL.
+- **`[nameparam]`**: Cria uma rota dinâmica baseada em parâmetro.
+- **`[_nameparam]`**: Pasta privada que não gera rota.
+- **`[[nameparam]]`**: Cria um parâmetro opcional na rota.
+- **`[...param]`**: Captura múltiplos segmentos da URL.
+
 ```
 app-next/
 │
@@ -266,26 +275,6 @@ npm run start
 
 O servidor de produção estará disponível em: **http://localhost:3000**
 
-### Deploy
-
-#### Opção 1: Docker
-
-```bash
-# Build da imagem Docker
-docker build -t sl8art-app .
-
-# Executar container
-docker run -p 3000:3000 sl8art-app
-```
-
-#### Opção 3: Servidor Node.js
-
-```bash
-# No servidor, após clonar o repositório
-npm install
-npm run build
-npm run start
-```
 
 ### Padrões de Commit
 
