@@ -17,13 +17,13 @@ export default function SocialSection() {
             <div className='w-full text-balance '>
               <h2 className='o-title !text-[2.5rem] md:!text-[6rem]'>BASTIDORES, <br className='hidden md:block' /> INSPIRAÇÕES <br className='hidden md:block' /> E NOVIDADES:</h2>
             </div>
-            <Link target='_blank' href={linksocial.instagram ? linksocial.instagram : '#'} className='text-primary underline font-medium font-tertiary text-lg w-full md:w-max md:text-2xl flex w-full transition-all duration-75 ease-in-out hover:text-primary/80 justify-start flex-col'>
+            <Link target='_blank' href={linksocial?.instagram ? linksocial?.instagram : '#'} className='text-primary underline font-medium font-tertiary text-lg w-full md:w-max md:text-2xl flex w-full transition-all duration-75 ease-in-out hover:text-primary/80 justify-start flex-col'>
               <p className='md:hidden text-balance'>Saiba tudo no instagram do Eduardo!</p>
               <p className='hidden md:block'>Saiba tudo</p>
               <p className='hidden md:block'>no instagram</p>
               <p className='hidden md:block'>do Eduardo!</p>
             </Link>
-            <Link target='_blank' href={linksocial.instagram ? linksocial.instagram : '#'} className=' flex w-max items-center gap-1'>
+            <Link target='_blank' href={linksocial?.instagram ? linksocial?.instagram : '#'} className=' flex w-max items-center gap-1'>
               <Icon name='icon-instagram' className='h-6 w-6 fill-white' />
               <p className='text-white text-lg'>eduardocosta</p>
               <Image

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "prebuild": "ts-node scripts/upload-to-cdn.js",
-    "build": "rm -rf .next && next build"
+    "build": "rm -rf .next && next build",
     "start": "next start",
     "lint": "next lint"
   },
