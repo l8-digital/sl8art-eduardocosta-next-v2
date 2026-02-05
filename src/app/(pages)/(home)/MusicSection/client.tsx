@@ -191,7 +191,7 @@ export default function MusicSection({ social }: Props) {
                     <div className={style['music__square']}>
 
                         <div className='w-full h-full md:flex'>
-                            <SpotifyPlayer albumId={'3eUqQHf9Gb8JI78sVIQvDv'} />
+                            <SpotifyPlayer albumId={'66Zd83fwGOHbQc9IXZxri7'} />
                         </div>
 
                         <div className="uppercase text-black flex flex-col gap-3 text-center z-[20] pb-[1rem]">
