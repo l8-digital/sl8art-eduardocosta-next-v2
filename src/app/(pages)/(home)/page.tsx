@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import ServerHero from '@/app/(pages)/(home)/HeroSection/server';
 import ServerVideoParallax from '@/app/(pages)/(home)/VideoParallax/server';
 import ServerEvent from '@/app/(pages)/(home)/EventsSection/server';
@@ -14,8 +15,10 @@ export default function Home() {
 
       <ServerHero />
       <ServerVideoParallax />
-      <ServerEvent />
-      <ServerMusic/>
+      <Suspense fallback={<div style={{ height: '400px' }} />}>
+        <ServerEvent />
+      </Suspense>
+      <ServerMusic />
       <ServerVideos />
       <ServerSocial />
       <ServerBiography />

@@ -1,17 +1,15 @@
-
-export const dynamic = "force-dynamic";
-
 import { api } from "@/app/api";
 import { EventType } from "@/types/event";
 import dynamicImport from "next/dynamic";
 
 const EventsSection = dynamicImport(
   () => import("@/app/(pages)/(home)/EventsSection/client"),
-  { ssr: true } // opcional, mas explícito
+  { ssr: true }
 );
 
 export default async function ServerCalendar() {
-  const response = (await api.events.getLimited(12)) as EventType[];
+  // Agenda atualizada a cada 60 segundos (ISR)
+  const response = (await api.events.getLimited(12, { next: { revalidate: 60 } })) as EventType[];
 
   return <EventsSection data={response} />;
 }

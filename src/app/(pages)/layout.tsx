@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 import "@/styles/globals.css";
 import { createMetadata } from "@/config/metadata";
@@ -32,15 +32,15 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
 
   return (
     <>
-     
-        {analitcsId &&
-          <GoogleAnalytics gaId={analitcsId} />
-        }
-        <AppProviders value={ConfigApp}>
-          <ReCaptchaProvider>
-            {children}
-          </ReCaptchaProvider>
-        </AppProviders>
+
+      {analitcsId &&
+        <GoogleAnalytics gaId={analitcsId} />
+      }
+      <AppProviders value={ConfigApp}>
+        <ReCaptchaProvider>
+          {children}
+        </ReCaptchaProvider>
+      </AppProviders>
 
 
     </>

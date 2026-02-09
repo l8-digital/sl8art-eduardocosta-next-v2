@@ -51,6 +51,7 @@ export class Api {
   async get<T = unknown>(
     path: string,
     params: Params = "",
+    init: RequestInit = {},
     ...params2: Params[]
   ): Promise<T | false> {
     const token = await getToken();
@@ -65,14 +66,15 @@ export class Api {
 
     try {
       const res = await fetch(endpoint, {
-        headers, 
-          cache: "no-store",
+        headers,
+        next: { revalidate: 3600 },
+        ...init,
       });
 
       if (res.status === 401) {
         resetToken();
         await authenticate();
-        return this.get<T>(path, params, ...params2);
+        return this.get<T>(path, params, init, ...params2);
       }
 
       if (!res.ok) {

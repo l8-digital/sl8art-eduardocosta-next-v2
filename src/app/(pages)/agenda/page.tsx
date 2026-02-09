@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default async function EventsServer() {
 
-    const response = await api.events.getMonth() as EventsByMonth;
+    const response = await api.events.getMonth({ next: { revalidate: 60 } }) as EventsByMonth;
 
     return (
         <main>

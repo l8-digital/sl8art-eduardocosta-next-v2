@@ -10,12 +10,12 @@ export class Events extends Api {
         return this.get(`/calendar_url/${url}`);
     }
 
-    getMonth() {
-        return this.get(`/calendar_month`);
+    getMonth(init?: RequestInit) {
+        return this.get(`/calendar_month`, "", init);
     }
 
-    getLimited(limit?: number) {
-        return this.get(`/calendar_limited/${limit}`);
+    getLimited(limit?: number, init?: RequestInit) {
+        return this.get(`/calendar_limited/${limit}`, "", init);
     }
 
 }
