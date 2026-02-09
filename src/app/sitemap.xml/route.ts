@@ -4,10 +4,8 @@ import { EventsByMonth } from "@/types/event";
 import { NewsType } from "@/types/news";
 import { ConfigurationTypes } from "@/types/configuration";
 
-export const revalidate = 0;
-
 export async function GET() {
-  const data = await api.configuration.getAll({ next: { revalidate: 0 } }) as ConfigurationTypes;
+  const data = await api.configuration.getAll() as ConfigurationTypes;
   const baseUrl = 'https://' + data?.site;
 
   const menu_schedule = true;
@@ -38,7 +36,7 @@ export async function GET() {
     `;
 
     try {
-      const response = await api.events.getMonth({ next: { revalidate: 0 } }) as EventsByMonth;
+      const response = await api.events.getMonth() as EventsByMonth;
       if (response) {
         const events = Object.values(response).flat();
 
@@ -72,7 +70,7 @@ export async function GET() {
     `;
 
     try {
-      const newsResponse = await api.news.getAll({ next: { revalidate: 0 } }) as NewsType[];
+      const newsResponse = await api.news.getAll() as NewsType[];
       if (newsResponse && Array.isArray(newsResponse)) {
         newsResponse.forEach((item) => {
           if (item.url) {
