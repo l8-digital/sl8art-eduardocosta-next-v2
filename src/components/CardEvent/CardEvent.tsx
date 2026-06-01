@@ -33,7 +33,7 @@ export function CardEvent({ item }: CardEventProps) {
         href={`/agenda/${item.url}`}
         className={style['c-card__item']}>
         <div className={`h-max flex flex-col md:flex-row items-center w-full justify-end relative z-[2] gap-3 md:gap-1 flex-1 ${isMobile ? style['c-card__card-desktop'] : ''}`}>
-          <div className="flex-1 flex flex-col md:flex-row items-center justify-start md:justify-center h-full w-full">
+          <div className="flex-1 flex flex-col md:flex-row items-center justify-start md:justify-end h-full w-full md:-mr-4 relative z-[3]">
             <p className={style['c-card__day']}>{formatDay(formatDate(item.date, { day: 'numeric' }))}</p>
             <p className={`${style['c-card__month']} md:hidden`}>{formatDate(item.date, { month: 'long' })}</p>
           </div>

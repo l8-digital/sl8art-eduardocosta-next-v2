@@ -63,17 +63,14 @@
             }
 
             &::-webkit-scrollbar-thumb {
-                // background: $color-secondary;
                 @apply bg-white;
                 padding: 0;
                 height: 5px;
                 border-radius: 85px;
-
             }
 
             &::-webkit-scrollbar-track {
-                //   background: $color-secondary;
-                @apply bg-white/50 border-2 border-black/60;
+                background: #800400;
                 border-radius: 7px;
                 border: 2px solid rgba(35, 32, 33, .9);
                 padding: 0 2px;

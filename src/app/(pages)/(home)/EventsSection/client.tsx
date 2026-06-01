@@ -8,7 +8,6 @@ import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 import { EventType } from '@/types/event';
 import Icon from '@/components/Icon/Icon';
 import { CardEvent } from '@/components/CardEvent/CardEvent';
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
@@ -47,29 +46,21 @@ export default function EventsSection({ data }: Props) {
             backgroundSize: 'contain',
             backgroundPosition: 'center',
         }}>
-            <div className={style['calendar__mobile']}>
-                <Image
-                    src={'/images/image-schendule.avif'}
-                    alt=''
-                    fill
-                    className='object-contain w-full object-left-top !relative'
-                    sizes="100%"
-                />
-            </div>
+            <div className={style['calendar__mobile']}></div>
             <div className='container relative z-[1] pt-7 md:pt-10'>
                 <div className='flex flex-col md:flex-col w-full justify-center h-full items-center md:items-end relative md:px-12'>
-                    <div className=" flex h-full w-full md:w-[30rem] items-center justify-center gap-7 pb-7 md:flex-col ">
+                    <div className=" flex h-full w-full md:w-[30rem] items-center justify-center gap-7 pb-0 md:flex-col ">
                         {calendar?.length &&
-                            <div className='w-full h-full flex justify-end max-md:mt-6  md:mb-10 text-center items-end md:items-center'>
+                            <div className='w-full h-full flex justify-end max-md:mt-6  md:mb-0 text-center items-end md:items-center'>
 
-                                <h2 className="o-title text-white !font-light">
+                                <h2 className="o-title !text-white !font-light">
                                     Agenda
                                 </h2>
 
                                 <div className='w-full justify-end flex md:hidden'>
                                     <div className='w-full flex justify-end'>
                                         <Link href="/agenda"
-                                            className="w-max  text-lg text-primary underline transition-all duration-500 ease-in-out font-tertiary">
+                                            className="w-max text-lg text-white underline transition-all duration-500 ease-in-out font-tertiary">
                                             Ver todos
                                         </Link>
                                     </div>
@@ -142,10 +133,10 @@ export default function EventsSection({ data }: Props) {
                         </div>
 
 
-                        <div className='w-full justify-end hidden md:flex'>
-                            <div className='w-full md:w-[36rem] flex justify-end md:justify-end pt-3 pr-16'>
+                        <div className='w-full justify-end hidden md:flex -mt-32 relative z-[10]'>
+                            <div className='w-full md:w-[36rem] flex justify-end md:justify-end pr-16'>
                                 <Link href="/agenda"
-                                    className="w-max  text-lg text-primary underline transition-all duration-500 ease-in-out font-tertiary">
+                                    className="w-max text-lg text-white underline transition-all duration-500 ease-in-out font-tertiary">
                                     Ver todos
                                 </Link>
                             </div>

@@ -14,7 +14,18 @@ export async function POST(request: NextRequest) {
   console.log(`Valor de NEXT_YOUTUBE_INFO: ${process.env.NEXT_YOUTUBE_INFO}`);
   console.log(`Valor de NEXT_YOUTUBE_PLAYLIST: ${process.env.NEXT_YOUTUBE_PLAYLIST}`);
 
-  const { path, playlistId, limit } = await request.json();
+  const { path, playlistId, limit, videoId } = await request.json();
+
+  if (path === 'oembed') {
+    const url = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`;
+    try {
+      const resp = await fetch(url);
+      const json = await resp.json();
+      return NextResponse.json(json);
+    } catch {
+      return NextResponse.json({ title: '' }, { status: 200 });
+    }
+  }
 
   // Apenas log para debug seguro
   console.log('Recebido path:', path);

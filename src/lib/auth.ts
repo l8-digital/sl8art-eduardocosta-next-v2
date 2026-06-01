@@ -49,10 +49,14 @@ function isTokenExpired(): boolean {
 export async function getToken(): Promise<string> {
   if (!siteToken || isTokenExpired()) {
     console.log("🔄 Token expirado ou inexistente — gerando novo token...");
-    await authenticate();
+    try {
+      await authenticate();
+    } catch {
+      return "";
+    }
   }
   console.log(siteToken)
-  return siteToken!;
+  return siteToken ?? "";
 }
 
 // === Apenas para depuração ===

@@ -46,14 +46,14 @@
     //     }
     // }
     &__card {
-        @apply w-full flex flex-col text-start justify-center h-full rounded-r-2xl relative py-6 px-2;
-        background: linear-gradient(to left, #36220B, rgba(255,255,255,0)) padding-box,
+        @apply w-full flex flex-col text-start justify-center h-full rounded-2xl relative py-6 pl-[2rem] pr-2;
+        background: linear-gradient(to right, #382512, #3E3125, #39302E, #242225, #151318) padding-box,
                     linear-gradient(to right, rgba(255,255,255,0), rgb(255, 255, 255)) border-box;
         border: 1px solid transparent;
 
         &-desktop {
             @apply w-full flex flex-col text-start justify-center border-[1px] border-white h-full rounded-2xl relative py-4 px-2;
-            background: linear-gradient(to left, #36220B, rgba(255,255,255,0)) padding-box,
+            background: linear-gradient(to right, #36220B, #141216) padding-box,
                         linear-gradient(to right, rgba(255,255,255,0), rgb(255, 255, 255)) border-box;
         }
     }
@@ -64,15 +64,8 @@
     }
 
     &__day {
-        @apply  text-white text-[7rem] md:text-[7rem] font-bold uppercase leading-none brightness-[180%];
-
-        background-image: url('/images/bg-number.webp'); /* sua imagem */
-        background-size: cover;
-        background-position: center;
-
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        
+        @apply text-[7rem] md:text-[7rem] font-bold uppercase leading-none;
+        color: #B30600;
     }
 
     &__state {
@@ -89,7 +82,7 @@
     }
 
     &__details {
-        @apply text-black text-sm md:text-xs font-sans font-medium uppercase bg-primary md:mt-2 rounded-full px-4 md:px-[1.3rem] py-1.5 md:py-1 w-full md:w-max text-center;
+        @apply text-black text-sm md:text-xs font-sans font-medium uppercase bg-white border-2 border-black md:mt-2 rounded-full px-4 md:px-[1.3rem] py-1.5 md:py-1 w-full md:w-max text-center;
     }
 
 

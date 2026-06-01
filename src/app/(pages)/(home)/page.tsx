@@ -15,10 +15,12 @@ export default function Home() {
 
       <ServerHero />
       <ServerVideoParallax />
-      <Suspense fallback={<div style={{ height: '400px' }} />}>
-        <ServerEvent />
-      </Suspense>
-      <ServerMusic />
+      <div style={{ backgroundImage: "url('/images/agenda-music-eduardo.webp')", backgroundSize: 'cover', backgroundPosition: 'top center', backgroundRepeat: 'no-repeat' }}>
+        <Suspense fallback={<div style={{ height: '400px' }} />}>
+          <ServerEvent />
+        </Suspense>
+        <ServerMusic />
+      </div>
       <ServerVideos />
       <ServerSocial />
       <ServerBiography />

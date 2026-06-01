@@ -2,6 +2,19 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+.icon-speaker-on__wave-1 {
+    animation: speaker-wave 1.6s ease-in-out infinite;
+    animation-delay: 0s;
+}
+.icon-speaker-on__wave-2 {
+    animation: speaker-wave 1.6s ease-in-out infinite;
+    animation-delay: 0.4s;
+}
+@keyframes speaker-wave {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.2; }
+}
+
 .o-title {
     @apply text-[3rem] leading-none md:text-[5rem] font-fourth font-light uppercase text-primary;
 }

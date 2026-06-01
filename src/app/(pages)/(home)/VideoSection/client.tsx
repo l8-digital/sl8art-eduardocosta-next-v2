@@ -18,6 +18,8 @@ interface Props {
     linkyoutube: string | null;
 }
 
+const PINNED_VIDEO_ID = 'Ro-pKz_Fq1Q';
+
 export default function ContactSection({ playlistId, linkyoutube }: Props) {
     const [playlistPage, setPlaylistPage] = useState<YoutubePlaylistResponse["items"]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -28,18 +30,37 @@ export default function ContactSection({ playlistId, linkyoutube }: Props) {
 
     useEffect(() => {
         async function fetchPlaylist() {
-            // Declare response dentro da função com o tipo certo:
-            const response = await youtube<YoutubePlaylistResponse>(
-                "playlistlimit",
-                playlistId ? playlistId : '',
-                12
+            const [playlistRes, oembedRes] = await Promise.allSettled([
+                youtube<YoutubePlaylistResponse>("playlistlimit", playlistId || '', 12),
+                fetch('/api/youtube', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ path: 'oembed', videoId: PINNED_VIDEO_ID })
+                })
+            ]);
+
+            const pinnedTitle = oembedRes.status === 'fulfilled' && oembedRes.value.ok
+                ? (await oembedRes.value.json()).title
+                : '';
+
+            const pinnedItem = {
+                snippet: {
+                    resourceId: { videoId: PINNED_VIDEO_ID },
+                    title: pinnedTitle,
+                }
+            };
+
+            const playlistItems = playlistRes.status === 'fulfilled'
+                ? playlistRes.value.items
+                : [];
+
+            const filtered = playlistItems.filter(
+                (item) => item.snippet.resourceId.videoId !== PINNED_VIDEO_ID
             );
 
-            if (response.items.length > 0) {
-                setPlaylistPage(response.items);
-                setCurrentIndex(0);
-                setPage(1);
-            }
+            setPlaylistPage([pinnedItem, ...filtered]);
+            setCurrentIndex(0);
+            setPage(1);
         }
 
         fetchPlaylist();

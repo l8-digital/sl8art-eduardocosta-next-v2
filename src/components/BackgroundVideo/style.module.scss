@@ -13,34 +13,84 @@
     display: none !important;
 }
 
-.icon {
-    animation: heartbeat 1.5s ease-in-out infinite both
+.gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+    z-index: 2;
+    pointer-events: none;
 }
 
-@keyframes heartbeat {
-    from {
-        transform: scale(1);
-        transform-origin: center center;
-        animation-timing-function: ease-out;
-    }
+/* ícone de mão centralizado no load */
+.centerPrompt {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    animation: promptPulse 2s ease-in-out infinite;
+}
 
-    10% {
-        transform: scale(0.91);
-        animation-timing-function: ease-in;
-    }
+.centerIcon {
+    width: 3.5rem;
+    height: 3.5rem;
+    fill: white;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.5));
+}
 
-    17% {
-        transform: scale(0.98);
-        animation-timing-function: ease-out;
-    }
+.centerLabel {
+    font-size: 0.8rem;
+    color: white;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
 
-    33% {
-        transform: scale(0.87);
-        animation-timing-function: ease-in;
-    }
+@keyframes promptPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.55; transform: scale(0.96); }
+}
 
-    45% {
-        transform: scale(1);
-        animation-timing-function: ease-out;
+/* overlay clicável cobrindo toda a section */
+.overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    cursor: pointer;
+}
+
+/* botão único no canto inferior esquerdo */
+.muteBtn {
+    position: absolute;
+    bottom: 1.75rem;
+    left: 1.75rem;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    width: 2.25rem;
+    height: 2.25rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+
+    &:hover {
+        background: rgba(0, 0, 0, 0.65);
+        border-color: rgba(255, 255, 255, 0.5);
     }
+}
+
+.muteIcon {
+    width: 1.1rem;
+    height: 1.1rem;
+    fill: white;
 }

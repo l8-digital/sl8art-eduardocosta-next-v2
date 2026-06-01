@@ -27,7 +27,7 @@ export default function EventDetail({ data, linkFanclub, title }: Props) {
     const calendar = data ? data.data : [];
 
     return (
-        <section className="pt-12 md:pt-32 bg-[#FCF3DD]">
+        <section className="pt-12 md:pt-32 bg-white">
 
             {schedule &&
                 <div className="container pb-12 md:pb-8">
@@ -43,7 +43,7 @@ export default function EventDetail({ data, linkFanclub, title }: Props) {
                     </h2>
 
                     <div className="flex flex-col md:flex-row mb-8">
-                        <div className="w-full md:w-6/12 px-4 md:border-r-2 border-primary mb-4 md:mb-0">
+                        <div className="w-full md:w-6/12 px-4 md:border-r-2 border-black mb-4 md:mb-0">
                             <ul className={`${style['c-list']} ${style['c-list--right']}`}>
                                 <li className={style['c-list__item']}>
                                     País <br />
@@ -163,13 +163,7 @@ export default function EventDetail({ data, linkFanclub, title }: Props) {
             <section
                 className="py-12 md:py-8 bg-[#2b1b0a]"
                 style={{
-                    background: `linear-gradient(
-      to bottom,
-      rgb(91, 65, 26) 0%,
-      rgb(64, 44, 10) 10%,
-      rgb(24, 17, 9) 70%,
-      rgb(38, 25, 9) 97%
-    )`
+                    background: `#000000`
                 }}>
                 <div className="container flex items-end justify-between mb-6 md:mb-8 gap-4">
                 <h2 className="font-secondary text-primary text-4xl md:text-5xl w-full tracking-[.05em]">
@@ -225,14 +219,14 @@ export default function EventDetail({ data, linkFanclub, title }: Props) {
                 <div className=" hidden md:flex justify-between bottom-32 relative ">
                     <button
                         type="button"
-                        className="prev-button__calendar text-[#5F2A1C] hover:text-[#FDF4DD] bg-[#FDF4DD] border border-[#5F2A1C] hover:border-[#FDF4DD] rounded-full p-2  hover:bg-[#261908] relative right-16 "
+                        className="prev-button__calendar text-white bg-[#B30601] border border-white rounded-full p-2 relative right-16 hover:opacity-60 transition-opacity duration-200"
                     >
                         <Icon name="icon-button_left" />
                     </button>
 
                     <button
                         type="button"
-                        className="next-button__calendar text-[#5F2A1C] hover:text-[#FDF4DD] bg-[#FDF4DD] border border-[#5F2A1C] hover:border-[#FDF4DD] rounded-full p-2 hover:bg-[#261908] relative left-16 "
+                        className="next-button__calendar text-white bg-[#B30601] border border-white rounded-full p-2 relative left-16 hover:opacity-60 transition-opacity duration-200"
                     >
                         <Icon name="icon-button_right" />
                     </button>
