@@ -12,9 +12,12 @@ export default async function NewsServer() {
     const response = await api.news.getAll() as NewsType[];
     const emphasis = await api.news.getEmphasis() as NewsType[];
 
+    const data = Array.isArray(response) ? response : [];
+    const emphasisData = Array.isArray(emphasis) ? emphasis : [];
+
     return (
         <main>
-            <NewsPage data={response} emphasis={emphasis} />
+            <NewsPage data={data} emphasis={emphasisData} />
         </main>
     );
 }
