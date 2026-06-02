@@ -380,12 +380,12 @@ export default function Icon({ name, id, ...props }: IconProps) {
             <svg viewBox="0 0 24 24" id={id} {...props} fill="none" >
                 <path
                     d="M6 21C7.65685 21 9 19.6569 9 18C9 16.3431 7.65685 15 6 15C4.34315 15 3 16.3431 3 18C3 19.6569 4.34315 21 6 21Z"
-                    stroke="black" strokeLinecap="round" strokeLinejoin="round" />
+                    strokeLinecap="round" strokeLinejoin="round" />
                 <path d="M9 18V5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M21 3L9 5M21 7L9 9" stroke="black" strokeLinecap="round" />
+                <path d="M21 3L9 5M21 7L9 9" strokeLinecap="round" />
                 <path
                     d="M18 19C19.6569 19 21 17.6569 21 16C21 14.3431 19.6569 13 18 13C16.3431 13 15 14.3431 15 16C15 17.6569 16.3431 19 18 19Z"
-                    stroke="black" strokeLinecap="round" strokeLinejoin="round" />
+                    strokeLinecap="round" strokeLinejoin="round" />
                 <path d="M21 16V3" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
         );

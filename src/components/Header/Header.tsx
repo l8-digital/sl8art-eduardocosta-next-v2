@@ -93,12 +93,12 @@ export function Header({ theme }: Props) {
                 {/* Menu Nav Inferior */}
                 <div className={style['menu-nav']}>
                     <NavLink to="contact" offset={-70} className={style['menu-nav__item']}>
-                        <Icon name="icon-mail" className="object-contain h-7 w-6 stroke-black" />
+                        <Icon name="icon-mail" className="object-contain h-7 w-6 stroke-white" />
                         Contato
                     </NavLink>
 
                     <NavLink to="music" offset={-70} className={style['menu-nav__item']}>
-                        <Icon name="icon-music" className="object-contain h-7 w-7 stroke-black stroke-[0.105rem]" />
+                        <Icon name="icon-music" className="object-contain h-7 w-7 stroke-white stroke-[0.105rem]" />
                         Músicas
                     </NavLink>
 

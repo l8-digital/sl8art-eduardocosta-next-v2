@@ -10,7 +10,7 @@
         @apply fixed bottom-0 z-[99] flex gap-0.5 w-full ;
 
         &__item {
-            @apply bg-primary flex-1 flex flex-col gap-0.5 items-center justify-between py-2.5 text-sm leading-none font-semibold;
+            @apply bg-[#800300] flex-1 flex flex-col gap-0.5 items-center justify-between py-2.5 text-sm leading-none font-semibold text-white;
         }
 
         .o-hamburguer {
@@ -19,13 +19,13 @@
                 @apply w-6 h-7 flex items-center justify-center;
 
                 span {
-                    @apply w-full h-[0.15rem] bg-black relative rounded-full;
+                    @apply w-full h-[0.15rem] bg-white relative rounded-full;
                     transition: 0.2s ease-in-out, top 0.2s ease-out;
 
                     &:before,
                     &:after {
                         content: "";
-                        @apply w-full h-full bg-black absolute left-0 rounded-full;
+                        @apply w-full h-full bg-white absolute left-0 rounded-full;
                         transition: 0.2s ease-in-out, top 0.2s ease-out;
                     }
 
@@ -68,18 +68,16 @@
         .box-social {
   @apply px-5 py-8 flex h-full flex-col justify-between;
 
-  /* Gradiente personalizado substituindo a cor sólida */
   background: linear-gradient(
     0deg,
-    rgb(23, 15, 7) 0%,
-    rgb(32, 22, 10) 40%,
-    rgb(47, 30, 12) 70%,
-    rgb(40, 25, 10) 80%,
-    rgb(20, 14, 8) 100%
+    #08070C 0%,
+    #2A2527 33%,
+    #3C322D 66%,
+    #392712 100%
   );
 
   &__title {
-    @apply text-[#fcf3dd] text-3xl font-extrabold tracking-[0.15rem];
+    @apply text-white text-3xl font-extrabold tracking-[0.15rem];
     text-orientation: mixed;
     writing-mode: vertical-rl;
     transform: rotate(-180deg);

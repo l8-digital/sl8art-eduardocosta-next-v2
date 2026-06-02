@@ -36,8 +36,8 @@ export default function SocialMenu() {
               )
             }
           >
-            <Icon name="icon-x-round" className="w-8 h-8 fill-[#fcf3dd] hover:fill-[#503316] md:hidden" />
-            <Icon name="icon-x" className="w-7 h-4 fill-[#fcf3dd] hover:fill-[#503316] hidden md:block" />
+            <Icon name="icon-x-round" className="w-8 h-8 fill-white hover:fill-white/70 md:hidden" />
+            <Icon name="icon-x" className="w-7 h-4 fill-white hover:fill-white/70 hidden md:block" />
           </button>
         </li>
       )}
@@ -58,8 +58,8 @@ export default function SocialMenu() {
               )
             }
           >
-            <Icon name="icon-tiktok-round" className="w-8 h-8 fill-[#fcf3dd] hover:fill-[#503316] md:hidden" />
-            <Icon name="icon-tiktok" className="w-7 h-5 fill-[#fcf3dd] hover:fill-[#503316] hidden md:block" />
+            <Icon name="icon-tiktok-round" className="w-8 h-8 fill-white hover:fill-white/70 md:hidden" />
+            <Icon name="icon-tiktok" className="w-7 h-5 fill-white hover:fill-white/70 hidden md:block" />
           </button>
         </li>
       )}
@@ -80,8 +80,8 @@ export default function SocialMenu() {
               )
             }
           >
-            <Icon name="icon-instagram-round" className="w-8 h-8 fill-[#fcf3dd] hover:fill-[#503316] md:hidden" />
-            <Icon name="icon-instagram" className="w-7 h-6 fill-[#fcf3dd] hover:fill-[#503316] hidden md:block" />
+            <Icon name="icon-instagram-round" className="w-8 h-8 fill-white hover:fill-white/70 md:hidden" />
+            <Icon name="icon-instagram" className="w-7 h-6 fill-white hover:fill-white/70 hidden md:block" />
           </button>
         </li>
       )}
@@ -102,8 +102,8 @@ export default function SocialMenu() {
               )
             }
           >
-            <Icon name="icon-facebook-round" className="w-8 h-8 fill-[#fcf3dd] hover:fill-[#503316] md:hidden" />
-            <Icon name="icon-facebook-square" className="w-6 h-5 fill-[#fcf3dd] hover:fill-[#503316] hidden md:block" />
+            <Icon name="icon-facebook-round" className="w-8 h-8 fill-white hover:fill-white/70 md:hidden" />
+            <Icon name="icon-facebook-square" className="w-6 h-5 fill-white hover:fill-white/70 hidden md:block" />
           </button>
         </li>
       )}
@@ -124,8 +124,8 @@ export default function SocialMenu() {
               )
             }
           >
-            <Icon name="icon-youtube-round" className="w-8 h-8 fill-[#fcf3dd] hover:fill-[#503316] md:hidden" />
-            <Icon name="icon-youtube-music-symbol" className="w-6 h-6 fill-[#fcf3dd] hover:fill-[#503316] hidden md:block" />
+            <Icon name="icon-youtube-round" className="w-8 h-8 fill-white hover:fill-white/70 md:hidden" />
+            <Icon name="icon-youtube-music-symbol" className="w-6 h-6 fill-white hover:fill-white/70 hidden md:block" />
           </button>
         </li>
       )}
