@@ -182,6 +182,7 @@ export default function MusicSection({ social }: Props) {
                             </p>
 
                             <ul className={style['c-streaming']}>
+                            
                                 <li>
                                     <a target='_blank' href={social?.spotify || '#'} className={style['c-streaming__link']}>
                                         <Icon name="icon-spotify" className="hidden md:flex h-7 fill-white" />
