@@ -57,14 +57,6 @@ export default function EventsSection({ data }: Props) {
                                     Agenda
                                 </h2>
 
-                                <div className='w-full justify-end flex md:hidden'>
-                                    <div className='w-full flex justify-end'>
-                                        <Link href="/agenda"
-                                            className="w-max text-lg text-white underline transition-all duration-500 ease-in-out font-tertiary">
-                                            Ver todos
-                                        </Link>
-                                    </div>
-                                </div>
                             </div>
                         }
 
@@ -133,8 +125,8 @@ export default function EventsSection({ data }: Props) {
                         </div>
 
 
-                        <div className='w-full justify-end hidden md:flex -mt-32 relative z-[10]'>
-                            <div className='w-full md:w-[36rem] flex justify-end md:justify-end pr-16'>
+                        <div className='w-full justify-end flex mt-8 md:mt-6 relative z-[10]'>
+                            <div className='w-full md:w-[36rem] flex justify-end md:justify-end md:pr-16'>
                                 <Link href="/agenda"
                                     className="w-max text-lg text-white underline transition-all duration-500 ease-in-out font-tertiary">
                                     Ver todos

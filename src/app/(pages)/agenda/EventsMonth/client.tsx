@@ -30,7 +30,7 @@ export default function EventsSection({ data }: Props) {
                                     {schedule.map((item, idx) => (
                                         <div
                                             key={idx}
-                                            className={`${style['c-list__item']} ${item.corporate ? 'grayscale' : 'grayscale-0'}`} >
+                                            className={`${style['c-list__item']} ${item.corporate ? style['corporate'] : ''} ${item.corporate ? 'grayscale' : 'grayscale-0'}`} >
                                             <div className="relative w-12 flex flex-col justify-center items-center">
                                                 <p className={style['c-list__day']}>
                                                     {formatDate(item.date, { day: 'numeric' })}
