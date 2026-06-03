@@ -176,9 +176,11 @@ export default function MusicSection({ social }: Props) {
                         </div>
 
                         <div className="uppercase text-white flex flex-col gap-3 text-center z-[20] py-[1.5rem]">
+                           
                             <p className="font-tertiary font-medium text-sm md:text-base text-balance">
                                 Disponível também nos streamings:
                             </p>
+
                             <ul className={style['c-streaming']}>
                                 <li>
                                     <a target='_blank' href={social?.spotify || '#'} className={style['c-streaming__link']}>
