@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "prebuild": "ts-node scripts/upload-to-cdn.js",
     "build": "rm -rf .next && next build",
+    "cdn:upload": "ts-node scripts/upload-to-cdn.js",
+    "deploy": "npm run cdn:upload && npm run build",
     "start": "next start",
     "lint": "next lint"
   },

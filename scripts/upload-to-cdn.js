@@ -1,4 +1,8 @@
-require("dotenv").config();
+// .env e um recurso de desenvolvimento local. Em producao/CI as variaveis
+// vem do ambiente, entao nao lemos arquivo nenhum do disco.
+if (process.env.NODE_ENV !== "production" && !process.env.CI) {
+  require("dotenv").config();
+}
 const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 const fs = require("fs-extra");
 const path = require("path");
@@ -90,6 +94,7 @@ function getContentType(filename) {
     await uploadDir(publicPath);
     console.log("🚀 Upload de toda a pasta public/ finalizado com sucesso!");
   } catch (err) {
-    console.error("❌ Erro no upload:", err);
+    console.error("❌ Erro no upload:", err && err.message ? err.message : err);
+    process.exitCode = 1;
   }
 })();

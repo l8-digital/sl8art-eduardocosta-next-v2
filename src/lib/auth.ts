@@ -24,7 +24,6 @@ export async function authenticate() {
   });
 
   const data = res.data;
-  console.log(data)
 
   siteToken = data?.token?.token ?? null;
 
@@ -55,7 +54,6 @@ export async function getToken(): Promise<string> {
       return "";
     }
   }
-  console.log(siteToken)
   return siteToken ?? "";
 }
 
